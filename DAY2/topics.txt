@@ -1,0 +1,91 @@
+features of JavaScript:
+
+1. Variables
+What is a variable?
+→ A name given to the memory location where a value can be stored.
+
+Use of variables
+→ To store and manipulate data in programs.
+
+How to declare variables?
+→ Using var, let, and const.
+
+2. let vs var vs const
+var: function-scoped, can be redeclared and updated.
+
+let: block-scoped, can be updated but not redeclared in the same scope.
+
+const: block-scoped, cannot be updated or redeclared; used for constants.
+
+3. Data Types
+Primitive types: number, string, boolean, null, undefined, bigint, symbol
+
+Reference types: object, array, function
+
+4. Operators  
+Arithmetic: +, -, *, /, % ,**
+
+Assignment: =, +=, -=, etc.
+
+Comparison: ==, ===, !=, !==, <, > etc.
+
+Logical: &&, ||, !
+
+Unary: ++, --, typeof, !
+
+
+Ternary: condition ? expr1 : expr2
+
+Bitwise: &, |, ^, ~, <<, >>
+
+5. Conditionals and Nested Conditions
+Using if, else if, else
+
+Nesting conditions inside others for complex logic
+
+6. Loops and Nested Loops
+for, while, do...while loops
+
+Nested loops for multidimensional iteration
+
+7. While Loop
+Executes as long as condition is true
+
+8. Do While Loop
+Executes at least once, then checks condition
+
+9. Functions
+Functional Statement (Function Declaration)
+
+Functional Expression
+
+Arrow Functions (()=>{})
+
+anonymous functions 
+
+
+10. Arguments vs Parameters
+Parameters: variables listed in function definition
+
+Arguments: actual values passed to function when called
+
+11. Default Parameters
+Setting default values for function parameters
+
+12. Practice Problems
+FizzBuzz problem
+
+Multiplication Tables problem
+
+Even or Odd number checker
+
+13. Optimized Solutions
+Writing efficient code considering input size and factors
+
+14. Timers in JavaScript
+setTimeout (runs once after delay)
+
+setInterval (runs repeatedly at intervals)
+
+string repetition vs string concatanation
+type convertion,implicit vs explicit type convertion 

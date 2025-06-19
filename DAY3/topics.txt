@@ -1,0 +1,16 @@
+higher order function 
+function declaration 
+function expression 
+arrow function 
+anonymous function
+callback functions 
+scope: block ,functional ,global 
+closure:
+fetch (http (get,post,put,delete))
+json (JavaScript object notation) -> json.stringify, json.parse()
+string methods
+array methods
+number methods 
+objects and its operations
+asynchronous function (async,await)
+problems:calculator using hof,stopwatch using setInterval

@@ -1,0 +1,17 @@
+Internet,
+network ->public network vs private network 
+websites,
+types of websites
+dns
+spa vs mpa 
+url
+inspecting a website ,how to modify website content,
+frontend vs backend and their technologies
+client vs server
+
+enviroment setup
+monolithic vs microservices 
+git,github
+nodejs
+expressjs
+mongodb
