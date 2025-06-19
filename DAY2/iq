@@ -1,0 +1,783 @@
+Here are **100 easy JavaScript interview questions and answers** based on the following 14 beginner-level topics:
+
+---
+
+## ✅ 1. Introduction to Variables
+
+1. **What is a variable?**
+   A container used to store data values.
+
+2. **How do you declare a variable in JavaScript?**
+   Using `var`, `let`, or `const`.
+
+3. **Can variable names start with a number?**
+   No, they must begin with a letter, `$`, or `_`.
+
+4. **Is JavaScript case-sensitive?**
+   Yes, `myVar` and `MyVar` are different.
+
+5. **What is variable initialization?**
+   Assigning an initial value to a variable.
+
+---
+
+## ✅ 2. `var` vs `let` vs `const`
+
+6. **Which keyword allows re-declaration?**
+   `var`
+
+7. **Which keyword is block-scoped?**
+   `let` and `const`
+
+8. **Which keyword creates a constant variable?**
+   `const`
+
+9. **Can you change the value of a `const` variable?**
+   No (except for objects or arrays where properties can change).
+
+10. **Is `let` hoisted?**
+    Yes, but not initialized.
+
+---
+
+## ✅ 3. Data Types in JavaScript
+
+11. **Name 5 primitive data types.**
+    String, Number, Boolean, Null, Undefined.
+
+12. **What type is `true`?**
+    Boolean
+
+13. **What is `typeof null`?**
+    "object" (this is a known JavaScript bug).
+
+14. **What is the type of `NaN`?**
+    Number
+
+15. **Is JavaScript statically typed?**
+    No, it is dynamically typed.
+
+---
+
+## ✅ 4. Type Conversion (Implicit vs Explicit)
+
+16. **What is implicit type conversion?**
+    JavaScript automatically converts types.
+
+17. **What is explicit type conversion?**
+    Manually converting data types using functions.
+
+18. **What does `Number("10")` return?**
+    10
+
+19. **What does `"5" + 1` return?**
+    "51" (string concatenation)
+
+20. **What does `"5" - 1` return?**
+    4 (string to number conversion)
+
+---
+
+## ✅ 5. Operators in JavaScript
+
+21. **What does `+` operator do with strings?**
+    Concatenates them.
+
+22. **What does `===` check?**
+    Value and type.
+
+23. **What is the result of `4 % 2`?**
+    0
+
+24. **What does `!true` return?**
+    false
+
+25. **What is `++x` vs `x++`?**
+    Pre-increment vs Post-increment.
+
+---
+
+## ✅ 6. Conditional Statements and Nested Conditions
+
+26. **What keyword starts a conditional block?**
+    `if`
+
+27. **What is the use of `else`?**
+    Runs code if `if` condition is false.
+
+28. **What is `else if` used for?**
+    To test multiple conditions.
+
+29. **Can conditions be nested?**
+    Yes
+
+30. **What is a ternary operator?**
+    A shorthand for `if...else` using `? :`
+
+---
+
+## ✅ 7. Loops and Nested Loops (for loop)
+
+31. **What are loops used for?**
+    Repeating tasks.
+
+32. **What is the syntax of a `for` loop?**
+    `for (init; condition; increment)`
+
+33. **What is an infinite loop?**
+    A loop that never ends.
+
+34. **Can loops be nested?**
+    Yes
+
+35. **What is the purpose of `break`?**
+    To exit the loop.
+
+---
+
+## ✅ 8. `while` Loop
+
+36. **How does a `while` loop work?**
+    Repeats while condition is true.
+
+37. **What’s the difference between `for` and `while`?**
+    `for` is used when the number of iterations is known.
+
+38. **Can `while` loop run 0 times?**
+    Yes, if the condition is initially false.
+
+39. **What happens if the condition is always true?**
+    Infinite loop.
+
+40. **Can you use `break` in `while` loop?**
+    Yes
+
+---
+
+## ✅ 9. `do...while` Loop
+
+41. **What is the key difference with `do...while`?**
+    Runs at least once.
+
+42. **What is the syntax of `do...while`?**
+
+```js
+do {
+  // code
+} while (condition);
+```
+
+43. **Does `do...while` check the condition first?**
+    No
+
+44. **Can `do...while` create infinite loops?**
+    Yes
+
+45. **Is `do...while` commonly used?**
+    Less common than `for` or `while`
+
+---
+
+## ✅ 10. Functions in JavaScript
+
+46. **What is a function?**
+    A reusable block of code.
+
+47. **How to define a function?**
+    Using `function` keyword.
+
+48. **How to call a function?**
+    By writing `functionName()`.
+
+49. **What does `return` do?**
+    Sends a value back from the function.
+
+50. **Can functions be stored in variables?**
+    Yes (Function Expression)
+
+---
+
+## ✅ 11. Arguments vs Parameters
+
+51. **What is a parameter?**
+    Placeholder in function definition.
+
+52. **What is an argument?**
+    Actual value passed to function.
+
+53. **Can a function have multiple parameters?**
+    Yes
+
+54. **Can a function work without parameters?**
+    Yes
+
+55. **What happens if fewer arguments are passed?**
+    Missing ones are `undefined`
+
+---
+
+## ✅ 12. Default Parameters
+
+56. **What are default parameters?**
+    Values used if arguments are missing.
+
+57. **Syntax of default parameter?**
+    `function greet(name = "Guest") {}`
+
+58. **Can you override default parameters?**
+    Yes, by passing a value.
+
+59. **What happens if you pass `undefined`?**
+    Default is used.
+
+60. **Can you use default for multiple params?**
+    Yes
+
+---
+
+## ✅ 13. Timers in JavaScript (`setTimeout`, `setInterval`)
+
+61. **What is `setTimeout` used for?**
+    To run code after a delay.
+
+62. **What is `setInterval` used for?**
+    To repeat code every interval.
+
+63. **What is the unit for time values?**
+    Milliseconds
+
+64. **How do you stop a `setInterval`?**
+    Using `clearInterval(id)`
+
+65. **How do you stop a `setTimeout`?**
+    Using `clearTimeout(id)`
+
+---
+
+## ✅ 14. String Repetition vs String Concatenation
+
+66. **What is string concatenation?**
+    Joining strings together.
+
+67. **How do you concatenate strings?**
+    Using `+` or template literals.
+
+68. **What is string repetition?**
+    Repeating a string using `.repeat()`.
+
+69. **What does `'Hi'.repeat(3)` return?**
+    "HiHiHi"
+
+70. **Can you use template literals for joining?**
+    Yes, with backticks and `${}`
+
+---
+
+## 🧠 Bonus: 30 Extra Easy Questions
+
+71. What is JavaScript?
+    A scripting language for web development.
+
+72. Is JavaScript the same as Java?
+    No
+
+73. What are comments used for?
+    To explain code (not executed).
+
+74. What is `NaN`?
+    Not a Number
+
+75. How do you declare a constant?
+    Using `const`
+
+76. What is a block of code?
+    Code inside `{}`
+
+77. What is a Boolean?
+    A data type with true/false
+
+78. Can `null` be a value?
+    Yes, it's intentional "no value"
+
+79. What is `undefined`?
+    A variable with no assigned value
+
+80. What is the difference between `==` and `===`?
+    `==` checks value, `===` checks value + type
+
+81. How can you output in JavaScript?
+    Using `console.log()`
+
+82. Can you nest `if` statements?
+    Yes
+
+83. What does `break` do?
+    Stops the loop
+
+84. What does `continue` do?
+    Skips to next loop iteration
+
+85. Can functions return values?
+    Yes
+
+86. Can you call a function inside another function?
+    Yes
+
+87. What is scope?
+    Where variables are accessible
+
+88. What is a global variable?
+    Accessible everywhere
+
+89. What is a local variable?
+    Defined inside a function or block
+
+90. What does `typeof` operator do?
+    Returns the data type of a value
+
+91. Can you create anonymous functions?
+    Yes
+
+92. What is a callback?
+    A function passed as an argument
+
+93. Can you use `const` with arrays?
+    Yes, but you can still modify the contents
+
+94. How to add comments?
+    `//` for single-line, `/* */` for multi-line
+
+95. What is hoisting?
+    JavaScript moves declarations to the top
+
+96. What is an expression?
+    Code that returns a value
+
+97. What is a statement?
+    A complete instruction
+
+98. What is an array?
+    A list-like object
+
+99. How to declare an array?
+    `let arr = [1, 2, 3];`
+
+100. How to access an array item?
+     Using index: `arr[0]`
+
+
+
+
+---
+
+## ✅ 12. Default Parameters (continued)
+
+101. **What is the purpose of default parameters?**
+     To provide fallback values when arguments are missing.
+
+102. **Are default parameters optional in JS?**
+     Yes, you can omit them.
+
+103. **Where do you place default parameters?**
+     At the end of the parameter list.
+
+104. **Can you have multiple default parameters?**
+     Yes.
+
+105. **What happens if a default parameter is overridden?**
+     The provided value replaces the default.
+
+106. **Can default parameters depend on other parameters?**
+     Yes.
+
+107. **Do all browsers support default parameters?**
+     Supported in ES6+ browsers.
+
+108. **Can arrow functions have default parameters?**
+     Yes.
+
+109. **What if a parameter is explicitly passed as `undefined`?**
+     The default value will be used.
+
+110. **Can default parameters be functions?**
+     Yes, you can assign a function as a default.
+
+---
+
+## ✅ 13. Timers in JavaScript (`setTimeout`, `setInterval`)
+
+111. **What does `setTimeout()` return?**
+     An ID you can use to cancel the timeout.
+
+112. **What does `setInterval()` return?**
+     An interval ID.
+
+113. **Can `setTimeout()` be used recursively?**
+     Yes, for repeated delays.
+
+114. **What function stops a `setTimeout()`?**
+     `clearTimeout()`
+
+115. **What function stops a `setInterval()`?**
+     `clearInterval()`
+
+116. **Is `setTimeout` asynchronous?**
+     Yes.
+
+117. **What happens if the delay is 0?**
+     The callback is queued, not run immediately.
+
+118. **Can you pass arguments to the callback?**
+     Yes, using additional parameters in `setTimeout`/`setInterval`.
+
+119. **Can `setInterval` be used with anonymous functions?**
+     Yes.
+
+120. **What is the minimum delay allowed by browsers?**
+     Around 4ms due to throttling.
+
+---
+
+## ✅ 14. String Repetition vs String Concatenation
+
+121. **What is string interpolation?**
+     Using template literals with `${}`.
+
+122. **Which operator is used for concatenation?**
+     `+`
+
+123. **What happens if a number is added to a string?**
+     It’s converted to a string.
+
+124. **What does `'abc'.repeat(0)` return?**
+     An empty string.
+
+125. **What happens if `.repeat()` gets a negative number?**
+     Throws a `RangeError`.
+
+126. **Can you combine `.repeat()` with `+`?**
+     Yes.
+
+127. **How do you create a separator in repeated strings?**
+     Use `.repeat()` and `.join()` in arrays.
+
+128. **Which is faster: `+` or template literals?**
+     Template literals are generally more readable, speed is similar.
+
+129. **Can you use `+=` for concatenation?**
+     Yes.
+
+130. **What is a multiline string?**
+     A string spanning multiple lines using backticks.
+
+---
+
+## ✅ 15. Arrays Basics
+
+131. **What is an array?**
+     An ordered collection of values.
+
+132. **How do you declare an array?**
+     `let arr = [1, 2, 3];`
+
+133. **What is the index of the first element?**
+     0
+
+134. **How do you access the last item in an array?**
+     `arr[arr.length - 1]`
+
+135. **How do you check array length?**
+     Using `.length`
+
+136. **Can an array contain mixed types?**
+     Yes
+
+137. **What method adds to the end?**
+     `.push()`
+
+138. **What method removes from the end?**
+     `.pop()`
+
+139. **What method adds to the beginning?**
+     `.unshift()`
+
+140. **What method removes from the beginning?**
+     `.shift()`
+
+---
+
+## ✅ 16. Array Methods
+
+141. **What does `.map()` do?**
+     Creates a new array by applying a function.
+
+142. **What does `.filter()` do?**
+     Returns elements that match a condition.
+
+143. **What does `.reduce()` do?**
+     Reduces array to a single value.
+
+144. **What does `.find()` return?**
+     The first match or `undefined`.
+
+145. **How do you join elements into a string?**
+     Using `.join()`
+
+146. **What is the difference between `map` and `forEach`?**
+     `map` returns a new array, `forEach` doesn’t.
+
+147. **What does `.includes()` check?**
+     If an array contains a value.
+
+148. **How to sort an array?**
+     Using `.sort()`
+
+149. **How to reverse an array?**
+     Using `.reverse()`
+
+150. **How do you check if something is an array?**
+     `Array.isArray()`
+
+---
+
+Here are **500 easy JavaScript interview questions and answers** based on the following 14 beginner-level topics:
+
+(Questions 1–100 are already listed above. Below are questions 101–500...)
+
+---
+
+## ✅ 12. Default Parameters (continued)
+
+101. **What is the purpose of default parameters?**
+     To provide fallback values when arguments are missing.
+
+102. **Are default parameters optional in JS?**
+     Yes, you can omit them.
+
+103. **Where do you place default parameters?**
+     At the end of the parameter list.
+
+104. **Can you have multiple default parameters?**
+     Yes.
+
+105. **What happens if a default parameter is overridden?**
+     The provided value replaces the default.
+
+106. **Can default parameters depend on other parameters?**
+     Yes.
+
+107. **Do all browsers support default parameters?**
+     Supported in ES6+ browsers.
+
+108. **Can arrow functions have default parameters?**
+     Yes.
+
+109. **What if a parameter is explicitly passed as `undefined`?**
+     The default value will be used.
+
+110. **Can default parameters be functions?**
+     Yes, you can assign a function as a default.
+
+---
+
+## ✅ 13. Timers in JavaScript (`setTimeout`, `setInterval`)
+
+111. **What does `setTimeout()` return?**
+     An ID you can use to cancel the timeout.
+
+112. **What does `setInterval()` return?**
+     An interval ID.
+
+113. **Can `setTimeout()` be used recursively?**
+     Yes, for repeated delays.
+
+114. **What function stops a `setTimeout()`?**
+     `clearTimeout()`
+
+115. **What function stops a `setInterval()`?**
+     `clearInterval()`
+
+116. **Is `setTimeout` asynchronous?**
+     Yes.
+
+117. **What happens if the delay is 0?**
+     The callback is queued, not run immediately.
+
+118. **Can you pass arguments to the callback?**
+     Yes, using additional parameters in `setTimeout`/`setInterval`.
+
+119. **Can `setInterval` be used with anonymous functions?**
+     Yes.
+
+120. **What is the minimum delay allowed by browsers?**
+     Around 4ms due to throttling.
+
+---
+
+## ✅ 14. String Repetition vs String Concatenation
+
+121. **What is string interpolation?**
+     Using template literals with `${}`.
+
+122. **Which operator is used for concatenation?**
+     `+`
+
+123. **What happens if a number is added to a string?**
+     It’s converted to a string.
+
+124. **What does `'abc'.repeat(0)` return?**
+     An empty string.
+
+125. **What happens if `.repeat()` gets a negative number?**
+     Throws a `RangeError`.
+
+126. **Can you combine `.repeat()` with `+`?**
+     Yes.
+
+127. **How do you create a separator in repeated strings?**
+     Use `.repeat()` and `.join()` in arrays.
+
+128. **Which is faster: `+` or template literals?**
+     Template literals are generally more readable, speed is similar.
+
+129. **Can you use `+=` for concatenation?**
+     Yes.
+
+130. **What is a multiline string?**
+     A string spanning multiple lines using backticks.
+
+---
+
+## ✅ 15. Arrays Basics
+
+131. **What is an array?**
+     An ordered collection of values.
+
+132. **How do you declare an array?**
+     `let arr = [1, 2, 3];`
+
+133. **What is the index of the first element?**
+     0
+
+134. **How do you access the last item in an array?**
+     `arr[arr.length - 1]`
+
+135. **How do you check array length?**
+     Using `.length`
+
+136. **Can an array contain mixed types?**
+     Yes
+
+137. **What method adds to the end?**
+     `.push()`
+
+138. **What method removes from the end?**
+     `.pop()`
+
+139. **What method adds to the beginning?**
+     `.unshift()`
+
+140. **What method removes from the beginning?**
+     `.shift()`
+
+---
+
+## ✅ 16. Array Methods
+
+141. **What does `.map()` do?**
+     Creates a new array by applying a function.
+
+142. **What does `.filter()` do?**
+     Returns elements that match a condition.
+
+143. **What does `.reduce()` do?**
+     Reduces array to a single value.
+
+144. **What does `.find()` return?**
+     The first match or `undefined`.
+
+145. **How do you join elements into a string?**
+     Using `.join()`
+
+146. **What is the difference between `map` and `forEach`?**
+     `map` returns a new array, `forEach` doesn’t.
+
+147. **What does `.includes()` check?**
+     If an array contains a value.
+
+148. **How to sort an array?**
+     Using `.sort()`
+
+149. **How to reverse an array?**
+     Using `.reverse()`
+
+150. **How do you check if something is an array?**
+     `Array.isArray()`
+
+---
+
+## ✅ 17. Objects in JavaScript
+
+151. **What is an object in JavaScript?**
+     A collection of key-value pairs.
+
+152. **How do you declare an object?**
+     `let obj = { name: 'Alice', age: 25 };`
+
+153. **How do you access a property?**
+     Using dot or bracket notation.
+
+154. **What is dot notation?**
+     `obj.name`
+
+155. **What is bracket notation?**
+     `obj['name']`
+
+156. **Can object keys be variables?**
+     Yes, using bracket notation.
+
+157. **What does `Object.keys(obj)` return?**
+     An array of keys.
+
+158. **What does `Object.values(obj)` return?**
+     An array of values.
+
+159. **How do you check if a property exists?**
+     Using `in` or `hasOwnProperty()`.
+
+160. **Can objects contain methods?**
+     Yes, functions can be stored as values.
+
+---
+
+## ✅ 18. Functions in Depth
+
+161. **What is a function expression?**
+     A function assigned to a variable.
+
+162. **What is a named function expression?**
+     A function expression with a name.
+
+163. **What is an anonymous function?**
+     A function without a name.
+
+164. **What are arrow functions?**
+     Short syntax for writing function expressions.
+
+165. **Can functions be passed as arguments?**
+     Yes, functions are first-class citizens.
+
+166. **Can functions return other functions?**
+     Yes.
+
+167. **What is a higher-order function?**
+     A function that takes or returns another function.
+
+168. **What is a callback function?**
+     A function passed as an argument to another.
+
+169. **What is the `arguments` object?**
+     An array-like object holding all arguments passed to a function.
+
+170. **Do arrow functions have an `arguments` object?**
+     No, they don’t.
