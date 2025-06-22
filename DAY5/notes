@@ -1,0 +1,232 @@
+Absolutely! Here's a detailed, easy-to-understand set of notes on the topics you requested, covering **responsive web design, CSS basics, DOM manipulation, and interactive webpages**:
+
+---
+
+# 1. Responsive Web Design & Media Queries
+
+### What is Responsive Web Design?
+
+- It means creating websites that **look good and work well on all devices** — desktops, tablets, and mobiles.
+- The layout and content **adapt automatically** to different screen sizes and orientations.
+
+### How to achieve responsiveness?
+
+- Use **flexbox or grid layouts** to arrange elements dynamically
+- Use **media queries** to apply CSS rules conditionally based on screen size
+
+---
+
+### Media Queries
+
+- CSS technique to apply different styles depending on device features like **screen width, height, resolution**, etc.
+
+**Syntax:**
+
+```css
+@media (max-width: 600px) {
+  /* CSS rules here will apply only when the viewport width is 600px or less */
+  body {
+    background-color: lightblue;
+  }
+}
+```
+
+**Example:**
+
+```css
+/* Default styles */
+.container {
+  width: 800px;
+  margin: auto;
+}
+
+/* For mobile devices */
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+    padding: 10px;
+  }
+}
+```
+
+---
+
+# 2. Adding Styles to HTML Elements
+
+There are 3 main ways to add CSS styles:
+
+### 1. Inline styles
+
+- Directly inside HTML elements using the `style` attribute
+
+```html
+<p style="color: red; font-size: 20px;">Hello World</p>
+```
+
+### 2. Internal CSS
+
+- Inside a `<style>` tag within the HTML `<head>`
+
+```html
+<head>
+  <style>
+    p {
+      color: green;
+      font-size: 18px;
+    }
+  </style>
+</head>
+```
+
+### 3. External CSS
+
+- In a separate `.css` file linked via `<link>`
+
+```html
+<head>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+```
+
+---
+
+# 3. CSS Basics: Selectors, Properties, and Values
+
+### CSS Selectors
+
+Selectors target HTML elements to style them:
+
+| Selector            | Description                             | Example                                |
+| ------------------- | --------------------------------------- | -------------------------------------- |
+| Element selector    | Select all elements by tag name         | `p { color: red; }`                    |
+| Class selector      | Select elements with a class            | `.btn { background: blue; }`           |
+| ID selector         | Select element with specific id         | `#header { font-size: 30px; }`         |
+| Attribute selector  | Select elements with specific attribute | `[type="text"] { border: 1px solid; }` |
+| Descendant selector | Select elements inside other elements   | `div p { margin: 10px; }`              |
+
+---
+
+### Common CSS Properties
+
+| Property           | Description                  | Example                               |
+| ------------------ | ---------------------------- | ------------------------------------- |
+| `color`            | Text color                   | `color: blue;`                        |
+| `font-size`        | Size of text                 | `font-size: 16px;`                    |
+| `background-color` | Background color             | `background-color: yellow;`           |
+| `display`          | How element is displayed     | `display: block;` or `inline`, `flex` |
+| `margin`           | Outside space around element | `margin: 10px;`                       |
+| `padding`          | Inside space inside element  | `padding: 5px;`                       |
+| `border`           | Border style                 | `border: 1px solid black;`            |
+
+---
+
+# 4. Document Object Model (DOM)
+
+- The DOM is a **tree structure representation of HTML elements** in the browser.
+- It allows JavaScript to **interact with, change, add, or remove HTML elements** dynamically.
+- Each HTML element is a **node** in the DOM tree.
+
+---
+
+### Basic DOM Manipulation with JavaScript
+
+```js
+// Select an element by id
+let heading = document.getElementById("heading");
+
+// Change its text content
+heading.textContent = "New Heading";
+
+// Change its style
+heading.style.color = "red";
+
+// Create a new element
+let newPara = document.createElement("p");
+newPara.textContent = "This is a new paragraph.";
+
+// Append it to the body
+document.body.appendChild(newPara);
+```
+
+---
+
+# 5. How to Create Interactive Webpages with DOM
+
+- Use **event listeners** to detect user actions like clicks, key presses, mouse movement, etc.
+- Update the DOM dynamically based on user input or events.
+
+**Example: Button click changes text**
+
+```html
+<button id="btn">Click me</button>
+<p id="text">Hello</p>
+
+<script>
+  let button = document.getElementById("btn");
+  let para = document.getElementById("text");
+
+  button.addEventListener("click", function () {
+    para.textContent = "You clicked the button!";
+  });
+</script>
+```
+
+---
+
+# 6. Guess the Number Game (Simple Example)
+
+**HTML:**
+
+```html
+<h1>Guess the Number</h1>
+<input type="number" id="guessInput" placeholder="Enter your guess" />
+<button id="guessBtn">Guess</button>
+<p id="message"></p>
+```
+
+**JavaScript:**
+
+```js
+const secretNumber = Math.floor(Math.random() * 100) + 1; // random number 1-100
+const input = document.getElementById("guessInput");
+const button = document.getElementById("guessBtn");
+const message = document.getElementById("message");
+
+button.addEventListener("click", function () {
+  const guess = Number(input.value);
+  if (!guess) {
+    message.textContent = "Please enter a number!";
+  } else if (guess === secretNumber) {
+    message.textContent = "Congrats! You guessed it!";
+  } else if (guess < secretNumber) {
+    message.textContent = "Too low! Try again.";
+  } else {
+    message.textContent = "Too high! Try again.";
+  }
+});
+```
+
+---
+
+# Summary
+
+| Topic                 | Key Points                                           |
+| --------------------- | ---------------------------------------------------- |
+| Responsive Design     | Adapt layout with media queries based on screen size |
+| Adding CSS Styles     | Inline, internal, external                           |
+| CSS Selectors         | Target elements by tag, class, id                    |
+| CSS Properties        | color, font-size, background-color, display, margin  |
+| DOM                   | Represents HTML elements as objects for scripting    |
+| Interactive Webpages  | Use event listeners & DOM updates                    |
+| Guess the Number Game | Simple example of user input, event, and DOM update  |
+
+---
+
+| Device Type           | Typical Screen Width Range (px) | Example Media Query                                         |
+| --------------------- | ------------------------------- | ----------------------------------------------------------- |
+| **Extra small**       | 0 – 575                         | `@media (max-width: 575px) { ... }`                         |
+| **Small devices**     | 576 – 767                       | `@media (min-width: 576px) and (max-width: 767px) { ... }`  |
+| **Medium devices**    | 768 – 991                       | `@media (min-width: 768px) and (max-width: 991px) { ... }`  |
+| **Large devices**     | 992 – 1199                      | `@media (min-width: 992px) and (max-width: 1199px) { ... }` |
+| **Extra large**       | 1200 and above                  | `@media (min-width: 1200px) { ... }`                        |
+| **Extra extra large** | 1600 and above                  | `@media (min-width                                          |

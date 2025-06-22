@@ -1,0 +1,1445 @@
+
+---
+
+### ✅ **JavaScript Function Interview Questions (1–20)**
+
+---
+
+### **1. What is a function in JavaScript?**
+
+**Answer:** A function is a reusable block of code that performs a specific task. It is invoked by its name.
+
+```js
+function greet() {
+  console.log("Hello!");
+}
+greet(); // Hello!
+```
+
+**Explanation:** Functions improve code reuse and structure.
+
+---
+
+### **2. What are the different ways to define a function in JavaScript?**
+
+**Answer:**
+
+* Function Declaration
+* Function Expression
+* Arrow Function
+* Function Constructor
+* IIFE (Immediately Invoked Function Expression)
+
+---
+
+### **3. What is the difference between function declaration and function expression?**
+
+**Answer:**
+
+* Function declarations are hoisted, can be called before they are defined.
+* Function expressions are not hoisted.
+
+```js
+greet(); // Works
+function greet() {}
+
+sayHi(); // Error
+const sayHi = function() {};
+```
+
+---
+
+### **4. What is an arrow function?**
+
+**Answer:** A concise syntax introduced in ES6 that doesn't bind its own `this`.
+
+```js
+const add = (a, b) => a + b;
+```
+
+**Explanation:** Arrow functions are great for callbacks and functional programming.
+
+---
+
+### **5. What is a callback function?**
+
+**Answer:** A function passed as an argument to another function.
+
+```js
+setTimeout(() => {
+  console.log("Callback fired");
+}, 1000);
+```
+
+---
+
+### **6. What are first-class functions?**
+
+**Answer:** In JavaScript, functions are treated like any other variable — they can be passed, returned, and stored.
+
+```js
+const greet = () => "Hello";
+const say = greet;
+console.log(say()); // Hello
+```
+
+---
+
+### **7. What is a higher-order function?**
+
+**Answer:** A function that takes another function as an argument or returns a function.
+
+```js
+function operate(fn, a, b) {
+  return fn(a, b);
+}
+```
+
+---
+
+### **8. What is a closure?**
+
+**Answer:** A closure is a function that retains access to its outer scope, even after the outer function has returned.
+
+```js
+function outer() {
+  let count = 0;
+  return function() {
+    count++;
+    console.log(count);
+  };
+}
+```
+
+---
+
+### **9. What is the difference between `arguments` object and rest parameters?**
+
+**Answer:**
+
+* `arguments` is an array-like object for traditional functions.
+* `...rest` collects remaining arguments into an array (ES6).
+
+```js
+function demo(...args) {
+  console.log(args); // array
+}
+```
+
+---
+
+### **10. Can arrow functions use `this` keyword?**
+
+**Answer:** No. They capture `this` from their enclosing context (lexical `this`).
+
+---
+
+### **11. What is an IIFE (Immediately Invoked Function Expression)?**
+
+**Answer:** A function that runs as soon as it's defined.
+
+```js
+(function() {
+  console.log("Runs instantly!");
+})();
+```
+
+---
+
+### **12. Can you return a function from another function?**
+
+**Answer:** Yes, JavaScript supports higher-order functions.
+
+```js
+function greet() {
+  return function() {
+    console.log("Hello!");
+  };
+}
+greet()(); // Hello!
+```
+
+---
+
+### **13. How does `this` behave inside regular vs arrow functions?**
+
+**Answer:**
+
+* Regular functions: `this` depends on caller.
+* Arrow functions: `this` is inherited from parent scope.
+
+---
+
+### **14. How do you create a function with default parameters?**
+
+```js
+function sayHi(name = "Guest") {
+  console.log("Hi", name);
+}
+```
+
+---
+
+### **15. What is the difference between `return` and `console.log()`?**
+
+* `return` gives a value back to the caller.
+* `console.log()` prints to the console for debugging.
+
+---
+
+### **16. How does function hoisting work?**
+
+**Answer:** Function declarations are hoisted to the top of their scope.
+
+```js
+hello();
+function hello() {
+  console.log("Hi");
+}
+```
+
+---
+
+### **17. What is the use of the `Function` constructor?**
+
+```js
+const add = new Function("a", "b", "return a + b");
+console.log(add(2, 3));
+```
+
+**Note:** Not recommended for performance and security reasons.
+
+---
+
+### **18. Can a function have multiple return statements?**
+
+**Answer:** Yes. But only one is executed per call, depending on conditions.
+
+```js
+function test(x) {
+  if (x > 0) return "Positive";
+  return "Non-positive";
+}
+```
+
+---
+
+### **19. Can functions be recursive in JavaScript?**
+
+**Answer:** Yes. A function that calls itself.
+
+```js
+function factorial(n) {
+  if (n <= 1) return 1;
+  return n * factorial(n - 1);
+}
+```
+
+---
+
+### **20. Can you store a function inside an object?**
+
+**Answer:** Yes — these are called **methods**.
+
+```js
+const obj = {
+  greet: function() {
+    console.log("Hi");
+  }
+};
+```
+
+
+## ✅ JavaScript Function Interview Questions (21–50)
+
+---
+
+### **21. Can functions be used as object properties?**
+
+**Answer:** Yes. They're called methods.
+
+```js
+const car = {
+  start: function () {
+    console.log("Engine started");
+  }
+};
+car.start(); // Engine started
+```
+
+---
+
+### **22. Can functions return other functions?**
+
+**Answer:** Yes. It's a common pattern in functional programming.
+
+```js
+function outer() {
+  return function () {
+    console.log("Inner function");
+  };
+}
+outer()(); // Inner function
+```
+
+---
+
+### **23. What is the difference between `call()`, `apply()`, and `bind()`?**
+
+| Method    | Usage                                    | Parameters             |
+| --------- | ---------------------------------------- | ---------------------- |
+| `call()`  | Calls function with `this`               | Pass args individually |
+| `apply()` | Calls function with `this`               | Pass args as array     |
+| `bind()`  | Returns a new function with `this` bound | Can be called later    |
+
+```js
+function greet(msg) {
+  console.log(msg + " " + this.name);
+}
+const person = { name: "Venkatesh" };
+greet.call(person, "Hello"); // Hello Venkatesh
+```
+
+---
+
+### **24. What is the purpose of `bind()`?**
+
+**Answer:** To permanently bind a function to a specific `this` context.
+
+```js
+const obj = { name: "Venky" };
+function say() {
+  console.log(this.name);
+}
+const boundSay = say.bind(obj);
+boundSay(); // Venky
+```
+
+---
+
+### **25. What are pure functions?**
+
+**Answer:** Functions that:
+
+* Always return the same output for same input
+* Have no side effects (don't modify external state)
+
+```js
+function add(a, b) {
+  return a + b;
+}
+```
+
+---
+
+### **26. What are impure functions?**
+
+**Answer:** Functions that rely on or modify external data.
+
+```js
+let count = 0;
+function increment() {
+  count++;
+}
+```
+
+---
+
+### **27. Can arrow functions be used as constructors?**
+
+**Answer:** ❌ No. Arrow functions can't be used with `new`.
+
+---
+
+### **28. Do arrow functions have `arguments` object?**
+
+**Answer:** ❌ No. Arrow functions do not have their own `arguments`. Use rest parameters instead.
+
+---
+
+### **29. What happens if you omit the return statement in a function?**
+
+**Answer:** The function returns `undefined` by default.
+
+---
+
+### **30. How do you prevent a function from being called multiple times rapidly?**
+
+**Answer:** Use **debounce** or **throttle** techniques.
+
+---
+
+### **31. What is function overloading in JS?**
+
+**Answer:** JavaScript doesn’t support real function overloading, but we can simulate it using `arguments`.
+
+```js
+function demo(a, b) {
+  if (b === undefined) return a;
+  return a + b;
+}
+```
+
+---
+
+### **32. What is the `arguments` object?**
+
+**Answer:** An array-like object that holds all arguments passed to a function.
+
+```js
+function printArgs() {
+  console.log(arguments);
+}
+```
+
+---
+
+### **33. What is the difference between `...rest` and `arguments`?**
+
+| Feature                | `arguments` | `...rest`  |
+| ---------------------- | ----------- | ---------- |
+| Array                  | Array-like  | True Array |
+| Arrow Function Support | ❌ No        | ✅ Yes      |
+| Usage                  | Legacy      | Modern     |
+
+---
+
+### **34. How do you create a dynamic number of parameters?**
+
+**Answer:** Use **rest parameters**.
+
+```js
+function sum(...nums) {
+  return nums.reduce((a, b) => a + b);
+}
+```
+
+---
+
+### **35. What is tail recursion?**
+
+**Answer:** A recursion where the recursive call is the last thing executed.
+
+```js
+function tail(n, acc = 1) {
+  if (n === 1) return acc;
+  return tail(n - 1, n * acc);
+}
+```
+
+---
+
+### **36. What is a named function expression?**
+
+**Answer:** A function expression with a name.
+
+```js
+const say = function greet() {
+  console.log("Hi");
+};
+```
+
+Useful for recursion and debugging.
+
+---
+
+### **37. Can a function be asynchronous?**
+
+**Answer:** Yes. Use `async` keyword.
+
+```js
+async function fetchData() {
+  let res = await fetch("url");
+}
+```
+
+---
+
+### **38. What is the return type of a function without a return statement?**
+
+**Answer:** `undefined`
+
+---
+
+### **39. Can functions be used as event handlers?**
+
+**Answer:** ✅ Yes.
+
+```js
+button.addEventListener("click", function () {
+  console.log("Clicked!");
+});
+```
+
+---
+
+### **40. What are generator functions?**
+
+**Answer:** Special functions that can pause and resume execution using `yield`.
+
+```js
+function* gen() {
+  yield 1;
+  yield 2;
+}
+```
+
+---
+
+### **41. What is the purpose of `yield` in generator functions?**
+
+**Answer:** To pause function execution and return a value temporarily.
+
+---
+
+### **42. What is the difference between a normal function and generator function?**
+
+| Feature         | Normal Function | Generator Function        |
+| --------------- | --------------- | ------------------------- |
+| Stops at return | ✅ Yes           | ❌ Can pause/resume        |
+| Uses `return`   | ✅               | ✅ + `yield`               |
+| Uses `*`        | ❌               | ✅ Yes (e.g., `function*`) |
+
+---
+
+### **43. How do you stop a function from executing more than once?**
+
+**Answer:** Use a flag or IIFE pattern.
+
+```js
+let called = false;
+function once() {
+  if (!called) {
+    called = true;
+    console.log("Called");
+  }
+}
+```
+
+---
+
+### **44. How do you delay a function execution?**
+
+**Answer:** Use `setTimeout`.
+
+```js
+setTimeout(() => console.log("Delayed"), 1000);
+```
+
+---
+
+### **45. How do you run a function periodically?**
+
+**Answer:** Use `setInterval`.
+
+```js
+setInterval(() => console.log("Running"), 2000);
+```
+
+---
+
+### **46. What is function composition?**
+
+**Answer:** Combining multiple functions into one.
+
+```js
+const compose = (f, g) => x => f(g(x));
+```
+
+---
+
+### **47. How do you memoize a function?**
+
+**Answer:** Cache results of expensive calls.
+
+```js
+function memoize(fn) {
+  const cache = {};
+  return function (x) {
+    if (cache[x]) return cache[x];
+    cache[x] = fn(x);
+    return cache[x];
+  };
+}
+```
+
+---
+
+### **48. Can functions be chained?**
+
+**Answer:** ✅ Yes, if each returns `this` or another function.
+
+```js
+const obj = {
+  greet() { console.log("Hi"); return this; },
+  bye() { console.log("Bye"); }
+};
+obj.greet().bye();
+```
+
+---
+
+### **49. What is the scope of a function parameter?**
+
+**Answer:** Parameters are local to the function and shadow outer variables.
+
+---
+
+### **50. What is an async function and what does it return?**
+
+**Answer:** A function declared with `async` keyword. It always returns a **Promise**.
+
+```js
+async function hello() {
+  return "Hi";
+}
+hello().then(console.log); // Hi
+```
+
+
+
+
+---
+
+## ✅ JavaScript Function Interview Questions (51–100)
+
+---
+
+### **51. What happens if you call a function with fewer arguments than parameters?**
+
+**Answer:** The missing parameters are set to `undefined`.
+
+```js
+function greet(a, b) {
+  console.log(a, b);
+}
+greet("Hi"); // "Hi", undefined
+```
+
+---
+
+### **52. What happens if you call a function with more arguments than parameters?**
+
+**Answer:** The extra arguments are ignored unless you use the `arguments` object or rest parameters.
+
+---
+
+### **53. Can JavaScript functions be overloaded like in other languages?**
+
+**Answer:** ❌ No. JavaScript does not support function overloading directly.
+
+You can simulate it:
+
+```js
+function test(a, b) {
+  if (b === undefined) return a;
+  return a + b;
+}
+```
+
+---
+
+### **54. What is function currying?**
+
+**Answer:** Transforming a function with multiple arguments into a series of functions that each take one argument.
+
+```js
+function multiply(a) {
+  return function (b) {
+    return a * b;
+  };
+}
+console.log(multiply(2)(3)); // 6
+```
+
+---
+
+### **55. What is partial application?**
+
+**Answer:** Pre-filling some parameters of a function.
+
+```js
+function greet(greeting, name) {
+  return `${greeting}, ${name}`;
+}
+const sayHello = greet.bind(null, "Hello");
+console.log(sayHello("Venkatesh")); // Hello, Venkatesh
+```
+
+---
+
+### **56. Can you create a self-invoking arrow function?**
+
+**Answer:**
+
+```js
+(() => {
+  console.log("IIFE Arrow");
+})();
+```
+
+---
+
+### **57. How to convert arguments object to a real array?**
+
+**Answer:**
+
+```js
+function demo() {
+  const args = Array.from(arguments);
+}
+```
+
+Or:
+
+```js
+const args = [...arguments]; // ❌ not in arrow functions
+```
+
+---
+
+### **58. Why does `this` behave differently in arrow functions?**
+
+**Answer:** Arrow functions don’t have their own `this`; they inherit it from their lexical scope.
+
+---
+
+### **59. Can functions be serialized in JavaScript?**
+
+**Answer:** ❌ Not directly. Functions are not serializable with `JSON.stringify()`.
+
+---
+
+### **60. How do you implement a function timer?**
+
+**Answer:**
+
+```js
+function timed(fn) {
+  return function (...args) {
+    console.time("Timer");
+    const result = fn(...args);
+    console.timeEnd("Timer");
+    return result;
+  };
+}
+```
+
+---
+
+### **61. How can you check if a variable is a function?**
+
+**Answer:**
+
+```js
+typeof x === "function";
+```
+
+---
+
+### **62. What is a function constructor and when is it used?**
+
+**Answer:** Rarely used. Allows creating functions dynamically.
+
+```js
+const sum = new Function("a", "b", "return a + b");
+```
+
+---
+
+### **63. Are functions objects in JavaScript?**
+
+**Answer:** ✅ Yes. Functions are objects and can have properties.
+
+---
+
+### **64. What happens when you return an object literal from an arrow function?**
+
+**Answer:** Wrap it in parentheses.
+
+```js
+const getUser = () => ({ name: "Venky" });
+```
+
+---
+
+### **65. How do arrow functions handle `new` keyword?**
+
+**Answer:** They **cannot** be used as constructors.
+
+---
+
+### **66. What is the use of `.length` on a function?**
+
+**Answer:** Returns the number of declared parameters.
+
+```js
+function a(x, y) {}
+console.log(a.length); // 2
+```
+
+---
+
+### **67. What is a function prototype?**
+
+**Answer:** Every function has a `prototype` property used when it's called with `new`.
+
+---
+
+### **68. How can you delay function execution in a loop?**
+
+**Answer:**
+
+```js
+for (let i = 0; i < 5; i++) {
+  setTimeout(() => console.log(i), i * 1000);
+}
+```
+
+---
+
+### **69. Can you define multiple functions with the same name in the same scope?**
+
+**Answer:** Last definition overrides the previous one.
+
+---
+
+### **70. What are function decorators?**
+
+**Answer:** Functions that enhance or wrap other functions (not built-in in JS but can be mimicked).
+
+---
+
+### **71. Can you add properties to a function?**
+
+**Answer:**
+
+```js
+function greet() {}
+greet.language = "English";
+```
+
+---
+
+### **72. What is `Function.name`?**
+
+**Answer:** Returns the name of the function.
+
+---
+
+### **73. What is tail call optimization (TCO)?**
+
+**Answer:** An optimization where the last call in a recursive function reuses the current stack frame. JS engines don’t consistently implement this.
+
+---
+
+### **74. Can you define functions inside loops?**
+
+**Answer:** Yes, but be aware of scope issues.
+
+---
+
+### **75. What is a lambda function?**
+
+**Answer:** It's a general term for anonymous functions. In JavaScript, it refers to arrow functions.
+
+---
+
+### **76. What happens if you call `return` alone in a function?**
+
+**Answer:** It returns `undefined`.
+
+---
+
+### **77. Can you attach event listeners using arrow functions?**
+
+**Answer:** Yes, but you can't use `this` to refer to the element inside the arrow function.
+
+---
+
+### **78. How do you execute a function conditionally?**
+
+**Answer:**
+
+```js
+if (typeof fn === "function") fn();
+```
+
+---
+
+### **79. What is the difference between a function and a method?**
+
+**Answer:** A **method** is a function that is a property of an object.
+
+---
+
+### **80. How do you create a chainable API using functions?**
+
+**Answer:**
+
+```js
+const chain = {
+  val: 0,
+  inc() { this.val++; return this; },
+  dec() { this.val--; return this; },
+  show() { console.log(this.val); return this; }
+};
+
+chain.inc().inc().dec().show(); // 1
+```
+
+---
+
+### **81. Can a function call itself?**
+
+**Answer:** ✅ Yes. This is called recursion.
+
+---
+
+### **82. How do you trace function calls?**
+
+**Answer:** Use `console.trace()`.
+
+---
+
+### **83. What are async generators?**
+
+**Answer:** Combine `async` and `*` to create generators that can pause `await` calls.
+
+---
+
+### **84. What is a thunk?**
+
+**Answer:** A function that wraps another function or expression, often used in async control flow.
+
+```js
+const thunk = () => someExpensiveCall();
+```
+
+---
+
+### **85. Can you destructure parameters in functions?**
+
+**Answer:**
+
+```js
+function show({ name, age }) {
+  console.log(name, age);
+}
+```
+
+---
+
+### **86. Can you use default + destructured parameters?**
+
+**Answer:**
+
+```js
+function config({ host = "localhost" } = {}) {
+  console.log(host);
+}
+```
+
+---
+
+### **87. Can you use functions in template literals?**
+
+**Answer:** ✅ Yes.
+
+```js
+const greet = name => `Hello, ${name}`;
+console.log(`${greet("Venky")}`);
+```
+
+---
+
+### **88. How do you test functions?**
+
+**Answer:** Use unit testing tools like Jest or console logs for small checks.
+
+---
+
+### **89. What are variadic functions?**
+
+**Answer:** Functions that accept a variable number of arguments (via `arguments` or `...rest`).
+
+---
+
+### **90. What is a sentinel value pattern in functions?**
+
+**Answer:** Using a specific value to indicate special behavior.
+
+```js
+function fetch(limit = -1) {
+  if (limit === -1) return allItems;
+}
+```
+
+---
+
+### **91. What is lazy function definition?**
+
+**Answer:** Replace a function with a more optimized version after first call.
+
+```js
+function init() {
+  console.log("First time setup");
+  init = () => console.log("Already initialized");
+}
+```
+
+---
+
+### **92. What are polyfills using functions?**
+
+**Answer:** Custom functions to mimic native features.
+
+---
+
+### **93. How do you call a function with no parameters?**
+
+**Answer:** Simply use `fn()`.
+
+---
+
+### **94. What happens if a function returns nothing?**
+
+**Answer:** It returns `undefined`.
+
+---
+
+### **95. Can you use `await` in a non-async function?**
+
+**Answer:** ❌ No. `await` can only be used inside `async` functions.
+
+---
+
+### **96. Can you use recursion with arrow functions?**
+
+**Answer:** ✅ Yes, but use a variable to refer to the function.
+
+```js
+const fact = n => n <= 1 ? 1 : n * fact(n - 1);
+```
+
+---
+
+### **97. How do you copy a function?**
+
+**Answer:** Functions are objects — copying them copies the reference.
+
+---
+
+### **98. Can a function be passed as an object key?**
+
+**Answer:** Not as a key directly. Keys are strings or symbols.
+
+---
+
+### **99. What is `Function.toString()`?**
+
+**Answer:** Returns the function’s source code as a string.
+
+---
+
+### **100. What is function caching?**
+
+**Answer:** Storing function output for specific inputs to avoid recomputation (memoization).
+
+---
+
+
+
+
+---
+
+### **101. Can a function be used as a property in a class?**
+
+**Answer:** ✅ Yes. They're called **methods** inside classes.
+
+```js
+class User {
+  greet() {
+    console.log("Hello");
+  }
+}
+```
+
+---
+
+### **102. Can two functions access each other's variables?**
+
+**Answer:** Only if they are in the **same scope** or via **closures**.
+
+---
+
+### **103. How do you define optional parameters in a function?**
+
+**Answer:** Use default values or check if a parameter is `undefined`.
+
+```js
+function greet(name = "Guest") {
+  console.log(`Hi, ${name}`);
+}
+```
+
+---
+
+### **104. Can you break out of a function early?**
+
+**Answer:** ✅ Yes. Use `return`.
+
+---
+
+### **105. Can arrow functions be recursive?**
+
+**Answer:** ✅ Yes, but must use a named constant:
+
+```js
+const fact = (n) => n <= 1 ? 1 : n * fact(n - 1);
+```
+
+---
+
+### **106. What are infinite recursive functions?**
+
+**Answer:** Functions that call themselves endlessly (can crash the stack).
+
+---
+
+### **107. Can a function take another function's return as input?**
+
+**Answer:** ✅ Yes.
+
+```js
+function double(x) { return x * 2; }
+function process(val) { return double(val); }
+```
+
+---
+
+### **108. Can a function return another function’s return value directly?**
+
+**Answer:** ✅ Yes.
+
+```js
+function add(x, y) {
+  return sum(x, y);
+}
+```
+
+---
+
+### **109. How to handle too many arguments passed to a function?**
+
+**Answer:** Use `...rest` or `arguments`.
+
+---
+
+### **110. Can functions throw exceptions?**
+
+**Answer:** ✅ Yes. Use `throw`.
+
+```js
+function demo() {
+  throw new Error("Something went wrong");
+}
+```
+
+---
+
+### **111. What is a named IIFE?**
+
+**Answer:** IIFE with an internal function name for recursion or debugging.
+
+```js
+(function recurse(n) {
+  if (n > 0) recurse(n - 1);
+})(3);
+```
+
+---
+
+### **112. Can a function redefine itself?**
+
+**Answer:** ✅ Yes.
+
+```js
+function test() {
+  console.log("First call");
+  test = function () {
+    console.log("Second call");
+  };
+}
+```
+
+---
+
+### **113. How to delay function execution until a condition is met?**
+
+**Answer:** Use polling or Promises.
+
+---
+
+### **114. What is a function wrapper?**
+
+**Answer:** A function that enhances another.
+
+```js
+function logWrapper(fn) {
+  return function (...args) {
+    console.log("Calling function...");
+    return fn(...args);
+  };
+}
+```
+
+---
+
+### **115. What is a trampoline function?**
+
+**Answer:** A technique to optimize deep recursion by using a loop.
+
+---
+
+### **116. What is the role of `.apply()` method?**
+
+**Answer:** Calls a function with arguments as an array.
+
+```js
+fn.apply(obj, [a, b]);
+```
+
+---
+
+### **117. What is `.call()` method used for?**
+
+**Answer:** Same as `.apply()` but arguments passed individually.
+
+---
+
+### **118. What are default parameters useful for?**
+
+**Answer:** Avoid checking for `undefined`.
+
+---
+
+### **119. Can you use arrow functions inside class methods?**
+
+**Answer:** ✅ Yes. They're great for callbacks or preserving `this`.
+
+---
+
+### **120. Can a function be bound to multiple contexts?**
+
+**Answer:** ❌ No. Once bound using `.bind()`, it cannot be re-bound.
+
+---
+
+### **121. How does scope chain work in nested functions?**
+
+**Answer:** Inner functions access variables from their outer scope.
+
+---
+
+### **122. How to avoid callback hell?**
+
+**Answer:** Use Promises or `async/await`.
+
+---
+
+### **123. Can a function be created dynamically based on user input?**
+
+**Answer:** ✅ Yes, using `new Function()` — but it's discouraged for security reasons.
+
+---
+
+### **124. Can two functions be mutually recursive?**
+
+**Answer:** ✅ Yes. Functions can call each other.
+
+---
+
+### **125. How to convert a regular function to an arrow function?**
+
+**Answer:** Remove `function`, and replace with `=>`.
+
+---
+
+### **126. Can an arrow function return an object?**
+
+**Answer:** ✅ Yes, use parentheses.
+
+---
+
+### **127. How does `return` work in recursion?**
+
+**Answer:** Each recursive call returns to the previous one until base case is reached.
+
+---
+
+### **128. What is a tail call?**
+
+**Answer:** A function call that occurs as the final action in another function.
+
+---
+
+### **129. What is an async IIFE?**
+
+**Answer:** An IIFE that is async.
+
+```js
+(async () => {
+  await someAsyncCall();
+})();
+```
+
+---
+
+### **130. What is function delegation?**
+
+**Answer:** Letting another function handle part of the task.
+
+---
+
+### **131. Can a function name be reused?**
+
+**Answer:** Later definitions override earlier ones in the same scope.
+
+---
+
+### **132. Can functions access outer variables but not modify them?**
+
+**Answer:** ✅ Yes, unless they're constants.
+
+---
+
+### **133. What’s the purpose of using `.bind(this)`?**
+
+**Answer:** To preserve context of `this` in callbacks.
+
+---
+
+### **134. What happens if you use `return` inside `setTimeout`?**
+
+**Answer:** It won’t return anything to the outer scope — only to the inner callback.
+
+---
+
+### **135. Can you clone a function in JavaScript?**
+
+**Answer:** Not directly. You can wrap it or re-declare it.
+
+---
+
+### **136. What are function guards?**
+
+**Answer:** Conditions that prevent function execution unless criteria are met.
+
+---
+
+### **137. How to cancel a function scheduled with `setTimeout`?**
+
+**Answer:**
+
+```js
+const id = setTimeout(...);
+clearTimeout(id);
+```
+
+---
+
+### **138. What are side effects in functions?**
+
+**Answer:** Any change made outside the function (DOM update, logging, etc.).
+
+---
+
+### **139. Can a function update its own code?**
+
+**Answer:** Yes, by overwriting itself.
+
+---
+
+### **140. How to keep a function private?**
+
+**Answer:** Use closures or modules.
+
+---
+
+### **141. What is a function pipeline?**
+
+**Answer:** Passing output of one function to another.
+
+---
+
+### **142. What is a composed function?**
+
+**Answer:** Combines multiple functions from right to left.
+
+---
+
+### **143. What is the difference between `fn()` and `new fn()`?**
+
+**Answer:** `fn()` calls the function; `new fn()` creates a new instance.
+
+---
+
+### **144. Can arrow functions be async?**
+
+**Answer:** ✅ Yes.
+
+```js
+const getData = async () => {
+  const res = await fetch("url");
+};
+```
+
+---
+
+### **145. How do functions work in strict mode?**
+
+**Answer:** You must explicitly declare variables; `this` in functions is `undefined` in strict mode.
+
+---
+
+### **146. What is a recursive tree traversal function?**
+
+**Answer:** A recursive function used to walk through trees or nested objects.
+
+---
+
+### **147. Can you attach metadata to functions?**
+
+**Answer:** ✅ Yes, by assigning properties.
+
+```js
+fn.author = "Venkatesh";
+```
+
+---
+
+### **148. What is a function expression with a name?**
+
+**Answer:**
+
+```js
+const show = function display() {
+  console.log("Hi");
+};
+```
+
+---
+
+### **149. Why is `this` undefined in a function?**
+
+**Answer:** Because it's called in strict mode or context isn't bound properly.
+
+---
+
+### **150. Can functions be frozen?**
+
+**Answer:** ✅ Yes, with `Object.freeze(fn)` — prevents changes to properties, not the code.
+
+---
+

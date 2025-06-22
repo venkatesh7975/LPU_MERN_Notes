@@ -1,0 +1,851 @@
+## JavaScript Arrays - 200 Interview Questions with Answers (Basic to Advanced)
+
+### 🧠 **Basic Level (1–50)**
+
+1. **What is an array in JavaScript?**
+
+> A special object used to store multiple values in a single variable.
+
+2. **How to create an empty array?**
+
+```js
+let arr = [];
+```
+
+3. **How to create an array with elements?**
+
+```js
+let fruits = ["apple", "banana", "mango"];
+```
+
+4. **How to access the first element of an array?**
+
+```js
+arr[0];
+```
+
+5. **How to get the last element?**
+
+```js
+arr[arr.length - 1];
+```
+
+6. **What does `arr.length` return?**
+
+> Total number of elements in the array.
+
+7. **How to add an element at the end?**
+
+```js
+arr.push("newElement");
+```
+
+8. **How to remove the last element?**
+
+```js
+arr.pop();
+```
+
+9. **How to add an element at the beginning?**
+
+```js
+arr.unshift("first");
+```
+
+10. **How to remove the first element?**
+
+```js
+arr.shift();
+```
+
+11. **How to check if a variable is an array?**
+
+```js
+Array.isArray(arr); // true
+```
+
+12. **What is the output of `typeof []`?**
+
+> "object"
+
+13. **How to check if an array contains a value?**
+
+```js
+arr.includes("value");
+```
+
+14. **What is `indexOf()`?**
+
+> Returns the first index of a given element, or -1 if not found.
+
+15. **What is `lastIndexOf()`?**
+
+> Returns the last occurrence index of an element.
+
+16. **What happens if you access `arr[10]` when array length is 5?**
+
+> Returns `undefined`.
+
+17. **What is a sparse array?**
+
+> An array with gaps (missing indexes).
+
+18. **How to clone an array?**
+
+```js
+let copy = [...arr];
+```
+
+19. **What does `slice()` do?**
+
+> Returns a shallow copy of a portion of an array.
+
+20. **What is the difference between `slice()` and `splice()`?**
+
+> `slice()` does not modify original array, `splice()` does.
+
+21. **What does `splice(start, deleteCount, ...items)` do?**
+
+> It modifies the original array by removing/replacing/adding items.
+
+22. **How to merge two arrays?**
+
+```js
+let merged = arr1.concat(arr2);
+```
+
+23. **What is the use of `join()`?**
+
+> Combines array elements into a single string.
+
+24. **What is the default separator in `join()`?**
+
+> Comma (,)
+
+25. **How to reverse an array?**
+
+```js
+arr.reverse();
+```
+
+26. **How to sort an array alphabetically?**
+
+```js
+arr.sort();
+```
+
+27. **How to sort numbers correctly?**
+
+```js
+arr.sort((a, b) => a - b);
+```
+
+28. **How to sort in descending order?**
+
+```js
+arr.sort((a, b) => b - a);
+```
+
+29. **How to convert a string into an array?**
+
+```js
+"apple,banana".split(",");
+```
+
+30. **How to convert an array to a string?**
+
+```js
+arr.toString();
+```
+
+31. **What does `Array.of()` do?**
+
+> Creates a new Array instance from a variable number of arguments.
+
+32. **What does `Array.from()` do?**
+
+> Creates a new array from array-like or iterable objects.
+
+33. **What is destructuring in arrays?**
+
+```js
+let [a, b] = [1, 2];
+```
+
+34. **How to swap variables using destructuring?**
+
+```js
+[a, b] = [b, a];
+```
+
+35. **How to flatten an array one level deep?**
+
+```js
+arr.flat();
+```
+
+36. **How to flatten nested arrays deeply?**
+
+```js
+arr.flat(Infinity);
+```
+
+37. **What is the spread operator?**
+
+> Allows copying or expanding arrays using `...`
+
+38. **Example of spreading in function call?**
+
+```js
+Math.max(...[1, 2, 3]); // 3
+```
+
+39. **What is the rest operator in arrays?**
+
+> Collects remaining elements in destructuring.
+
+```js
+let [a, ...rest] = [1, 2, 3];
+```
+
+40. **What is `map()` used for?**
+
+> Transforms each element and returns a new array.
+
+41. **What is `filter()` used for?**
+
+> Filters elements based on a condition.
+
+42. **What is `reduce()` used for?**
+
+> Reduces array to a single value using a callback.
+
+43. **What does `find()` do?**
+
+> Returns the first element that satisfies a condition.
+
+44. **What is `findIndex()`?**
+
+> Returns the index of the first matching element.
+
+45. **How to check if all elements pass a condition?**
+
+```js
+arr.every(x => x > 0);
+```
+
+46. **How to check if any element passes a condition?**
+
+```js
+arr.some(x => x > 0);
+```
+
+47. **How to remove duplicates from an array?**
+
+```js
+[...new Set(arr)];
+```
+
+48. **How to fill all elements with a static value?**
+
+```js
+arr.fill(0);
+```
+
+49. **How to create an array of given length with value?**
+
+```js
+Array(5).fill("X");
+```
+
+50. **What happens if you use `delete arr[1]`?**
+
+> It removes the element but keeps the index as `empty`.
+
+### 🚀 Intermediate to Advanced (51–100)
+
+51. **What is a multidimensional array?**
+
+> An array containing other arrays as elements.
+
+52. **How to access elements in a 2D array?**
+
+```js
+let matrix = [[1, 2], [3, 4]];
+console.log(matrix[1][0]); // 3
+```
+
+53. **How to loop through a 2D array?**
+
+```js
+for (let i = 0; i < matrix.length; i++) {
+  for (let j = 0; j < matrix[i].length; j++) {
+    console.log(matrix[i][j]);
+  }
+}
+```
+
+54. **How to create a 2D array with default values?**
+
+```js
+let rows = 3, cols = 4;
+let grid = Array.from({ length: rows }, () => Array(cols).fill(0));
+```
+
+55. **How to deep clone an array?**
+
+```js
+let deepCopy = JSON.parse(JSON.stringify(arr));
+```
+
+56. **Why is shallow copy not enough sometimes?**
+
+> Because nested objects/arrays still reference original memory.
+
+57. **How to check for equality of arrays?**
+
+> Use `JSON.stringify(arr1) === JSON.stringify(arr2)` (not ideal for nested arrays with different order).
+
+58. **What are array-like objects?**
+
+> Objects with indexed elements and `length` property, but not full array methods (e.g., `arguments`, NodeLists).
+
+59. **Can you use array methods on strings?**
+
+> Some methods like `split()`, `Array.from()`, `spread` work.
+
+60. **How to reverse a string using arrays?**
+
+```js
+let reversed = str.split('').reverse().join('');
+```
+
+61. **What is the time complexity of `push()` and `pop()`?**
+
+> O(1)
+
+62. **What is the time complexity of `shift()` and `unshift()`?**
+
+> O(n) because it reindexes every element.
+
+63. **What does `copyWithin()` do?**
+
+> Copies part of the array to another location within it.
+
+64. **How to generate an array from 1 to 100?**
+
+```js
+let arr = Array.from({ length: 100 }, (_, i) => i + 1);
+```
+
+65. **How to remove falsy values?**
+
+```js
+arr.filter(Boolean);
+```
+
+66. **How to count occurrences of elements?**
+
+```js
+arr.reduce((acc, val) => { acc[val] = (acc[val] || 0) + 1; return acc; }, {});
+```
+
+67. **How to group items in an array?**
+
+> Use `reduce()` and provide keys to group.
+
+68. **How to find the max value in an array?**
+
+```js
+Math.max(...arr);
+```
+
+69. **How to find the min value in an array?**
+
+```js
+Math.min(...arr);
+```
+
+70. **How to shuffle an array randomly?**
+
+```js
+arr.sort(() => Math.random() - 0.5);
+```
+
+71. **How to implement Fisher-Yates shuffle?**
+
+```js
+for (let i = arr.length - 1; i > 0; i--) {
+  let j = Math.floor(Math.random() * (i + 1));
+  [arr[i], arr[j]] = [arr[j], arr[i]];
+}
+```
+
+72. **How to remove specific element by value?**
+
+```js
+arr = arr.filter(e => e !== value);
+```
+
+73. **How to insert at a specific index?**
+
+```js
+arr.splice(index, 0, value);
+```
+
+74. **How to replace a specific index?**
+
+```js
+arr[index] = newValue;
+```
+
+75. **What is the output of `new Array(3)`?**
+
+> Creates an array with 3 empty slots: `[ <3 empty items> ]`
+
+76. **Difference between `Array(n)` and `[undefined, undefined, ...]`?**
+
+> First creates holes, second creates values.
+
+77. **Can you chain array methods?**
+
+> Yes: `arr.filter(...).map(...).reduce(...)`
+
+78. **Can `map()` return undefined?**
+
+> Yes, depends on what is returned inside callback.
+
+79. **What happens if you `return` nothing in map()?**
+
+> `undefined` for that index.
+
+80. **What is the purpose of callback in `reduce()`?**
+
+> Accumulates each element to a single output.
+
+81. **Can reduce be used for flattening?**
+
+```js
+arr.reduce((acc, val) => acc.concat(val), []);
+```
+
+82. **How to use `flatMap()`?**
+
+```js
+arr.flatMap(x => [x, x]);
+```
+
+83. **What is difference between `map().flat()` and `flatMap()`?**
+
+> `flatMap()` does both in one pass, better performance.
+
+84. **How to find intersection of two arrays?**
+
+```js
+arr1.filter(x => arr2.includes(x));
+```
+
+85. **How to find union of arrays?**
+
+```js
+[...new Set([...arr1, ...arr2])];
+```
+
+86. **How to find difference between arrays?**
+
+```js
+arr1.filter(x => !arr2.includes(x));
+```
+
+87. **How to chunk an array into smaller arrays?**
+
+```js
+let chunk = (arr, size) => arr.reduce((acc, _, i) =>
+  (i % size ? acc : [...acc, arr.slice(i, i + size)]), []);
+```
+
+88. **What is array destructuring with default values?**
+
+```js
+let [a = 1, b = 2] = [];
+```
+
+89. **How to remove empty elements in sparse array?**
+
+```js
+arr.filter(() => true);
+```
+
+90. **How to check if an array is empty?**
+
+```js
+arr.length === 0;
+```
+
+91. **What is the result of `Array(3).map(x => 0)`?**
+
+> `[ <3 empty items> ]` → won’t work; need to use `.fill()`
+
+92. **Why doesn’t `Array(3).map()` work as expected?**
+
+> Because `map()` skips uninitialized slots.
+
+93. **What are holes in arrays?**
+
+> Undefined positions that were never assigned.
+
+94. **What does `entries()` return?**
+
+> An iterator of `[index, value]` pairs.
+
+95. **How to loop with `entries()`?**
+
+```js
+for (let [i, val] of arr.entries()) { console.log(i, val); }
+```
+
+96. **What does `keys()` return?**
+
+> An iterator of array indices.
+
+97. **What does `values()` return?**
+
+> An iterator of array values.
+
+98. **How to get all indexes of a value?**
+
+```js
+arr.reduce((acc, val, idx) => val === target ? [...acc, idx] : acc, []);
+```
+
+99. **What are typed arrays in JS?**
+
+> Special array-like objects for handling binary data.
+
+100. **How to convert arguments to array?**
+
+```js
+Array.from(arguments); // or [...arguments]
+```
+
+### 🧩 Algorithmic & Real-World Use Cases (101–150)
+
+101. **Find the second largest number in an array**
+
+```js
+let secondMax = arr => [...new Set(arr)].sort((a, b) => b - a)[1];
+```
+
+102. **Check if array is palindrome**
+
+```js
+let isPalindrome = arr => arr.join('') === arr.slice().reverse().join('');
+```
+
+103. **Find the frequency of each element in array**
+
+```js
+let freq = arr.reduce((acc, val) => {
+  acc[val] = (acc[val] || 0) + 1;
+  return acc;
+}, {});
+```
+
+104. **Find the missing number from 1 to N**
+
+```js
+let findMissing = arr => {
+  let n = arr.length + 1;
+  let total = (n * (n + 1)) / 2;
+  return total - arr.reduce((a, b) => a + b, 0);
+};
+```
+
+105. **Check if two arrays are equal (values and order)**
+
+```js
+let isEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+```
+
+106. **Remove duplicate objects by key**
+
+```js
+let uniqueById = arr => [...new Map(arr.map(obj => [obj.id, obj])).values()];
+```
+
+107. **Rotate array left by k positions**
+
+```js
+let rotateLeft = (arr, k) => [...arr.slice(k), ...arr.slice(0, k)];
+```
+
+108. **Rotate array right by k positions**
+
+```js
+let rotateRight = (arr, k) => [...arr.slice(-k), ...arr.slice(0, -k)];
+```
+
+109. **Group elements by key**
+
+```js
+let groupBy = (arr, key) => arr.reduce((acc, obj) => {
+  (acc[obj[key]] = acc[obj[key]] || []).push(obj);
+  return acc;
+}, {});
+```
+
+110. **Find common elements in three arrays**
+
+```js
+arr1.filter(v => arr2.includes(v) && arr3.includes(v));
+```
+
+111. **Move all zeros to end**
+
+```js
+let moveZeros = arr => arr.filter(x => x !== 0).concat(arr.filter(x => x === 0));
+```
+
+112. **Check if array has all unique elements**
+
+```js
+new Set(arr).size === arr.length;
+```
+
+113. **Flatten deeply nested array without flat()**
+
+```js
+function flatten(arr) {
+  return arr.reduce((acc, val) => Array.isArray(val) ? acc.concat(flatten(val)) : acc.concat(val), []);
+}
+```
+
+114. **Find pair with given sum**
+
+```js
+function findPair(arr, sum) {
+  let set = new Set();
+  for (let num of arr) {
+    if (set.has(sum - num)) return [num, sum - num];
+    set.add(num);
+  }
+}
+```
+
+115. **Partition array into even and odd**
+
+```js
+let evens = arr.filter(x => x % 2 === 0);
+let odds = arr.filter(x => x % 2 !== 0);
+```
+
+116. **Find longest increasing subarray**
+
+> Requires dynamic tracking of increasing sequences.
+
+117. **Create array from range (e.g., 5 to 15)**
+
+```js
+let range = (start, end) => Array.from({ length: end - start + 1 }, (_, i) => start + i);
+```
+
+118. **Remove n elements from end**
+
+```js
+arr.slice(0, -n);
+```
+
+119. **Compare arrays regardless of order**
+
+```js
+let isEqual = (a, b) => a.sort().toString() === b.sort().toString();
+```
+
+120. **Check if array contains duplicate**
+
+```js
+arr.length !== new Set(arr).size;
+```
+
+121. **Find most frequent element**
+
+```js
+Object.entries(freq).reduce((a, b) => a[1] > b[1] ? a : b);
+```
+
+122. **Remove nth occurrence of element**
+
+> Use counter while filtering.
+
+123. **Find median of sorted array**
+
+```js
+function median(arr) {
+  const mid = Math.floor(arr.length / 2);
+  return arr.length % 2 !== 0 ? arr[mid] : (arr[mid - 1] + arr[mid]) / 2;
+}
+```
+
+124. **Check if array is sorted**
+
+```js
+arr.every((val, i, a) => i === 0 || a[i - 1] <= val);
+```
+
+125. **Split array into chunks of N**
+
+```js
+let chunk = (arr, size) => Array.from({ length: Math.ceil(arr.length / size) }, (_, i) => arr.slice(i * size, i * size + size));
+```
+
+126. **Convert array to object**
+
+```js
+Object.assign({}, arr);
+```
+
+127. **Sum of array using reduce**
+
+```js
+arr.reduce((a, b) => a + b, 0);
+```
+
+128. **Product of array using reduce**
+
+```js
+arr.reduce((a, b) => a * b, 1);
+```
+
+129. **Zip two arrays into array of pairs**
+
+```js
+arr1.map((val, i) => [val, arr2[i]]);
+```
+
+130. **Unzip array of pairs**
+
+```js
+let unzip = pairs => pairs.reduce(([a, b], [x, y]) => ([...a, x], [...b, y]), [[], []]);
+```
+
+131. **Replace all instances of value**
+
+```js
+arr.map(x => x === target ? newVal : x);
+```
+
+132. **Capitalize first letter of each word in array**
+
+```js
+arr.map(word => word[0].toUpperCase() + word.slice(1));
+```
+
+133. **Sort strings ignoring case**
+
+```js
+arr.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+```
+
+134. **Check if array starts/ends with value**
+
+```js
+arr[0] === val // starts
+arr[arr.length - 1] === val // ends
+```
+
+135. **Convert sparse array to dense**
+
+```js
+arr.filter(() => true);
+```
+
+136. **Find indexes of even numbers**
+
+```js
+arr.map((v, i) => v % 2 === 0 ? i : -1).filter(i => i !== -1);
+```
+
+137. **Get first N elements**
+
+```js
+arr.slice(0, N);
+```
+
+138. **Get last N elements**
+
+```js
+arr.slice(-N);
+```
+
+139. **Replace values based on index**
+
+```js
+arr.map((v, i) => i % 2 === 0 ? 0 : v);
+```
+
+140. **Merge sorted arrays**
+
+```js
+[...arr1, ...arr2].sort((a, b) => a - b);
+```
+
+141. **Find unique elements in two arrays**
+
+```js
+arr1.filter(x => !arr2.includes(x)).concat(arr2.filter(x => !arr1.includes(x)));
+```
+
+142. **Sort array by string length**
+
+```js
+arr.sort((a, b) => a.length - b.length);
+```
+
+143. **Access random element from array**
+
+```js
+arr[Math.floor(Math.random() * arr.length)];
+```
+
+144. **Calculate average of numbers**
+
+```js
+arr.reduce((a, b) => a + b, 0) / arr.length;
+```
+
+145. **Convert object to array of key-value pairs**
+
+```js
+Object.entries(obj);
+```
+
+146. **Create array of repeated values**
+
+```js
+Array(n).fill(value);
+```
+
+147. **Count truthy values**
+
+```js
+arr.filter(Boolean).length;
+```
+
+148. **Trim whitespace from all string items**
+
+```js
+arr.map(s => s.trim());
+```
+
+149. **Capitalize all strings**
+
+```js
+arr.map(s => s.toUpperCase());
+```
+
+150. **Convert array of numbers to array of strings**
+
+```js
+arr.map(String);
+```
+

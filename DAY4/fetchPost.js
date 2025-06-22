@@ -4,7 +4,7 @@ async function fetchPosts() {
   //got array of  object as response
   let titles = data.map((obj) => {
     return obj.title;
-  }); // extracting titiles from object and create new array that contains only titles
+  }); // extracting titles from object and create new array that contains only titles
   // array titles
   let userinput = "sunt";
   const filterPost = titles.filter((title) => title.includes(userinput));
