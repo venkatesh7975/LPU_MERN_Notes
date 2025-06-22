@@ -1,0 +1,138 @@
+## Closures
+
+**Q1:** What is a closure in JavaScript?
+**A:** A closure is a function that remembers and can access variables from its outer (enclosing) scope even after that outer function has finished executing.
+
+**Q2:** Give an example of a closure.
+**A:**
+
+```js
+function outer() {
+  let count = 0;
+  return function inner() {
+    count++;
+    return count;
+  };
+}
+const counter = outer();
+console.log(counter()); // 1
+console.log(counter()); // 2
+```
+
+---
+
+## Destructuring
+
+**Q3:** What is destructuring in JavaScript?
+**A:** Destructuring is a syntax to unpack values from arrays or properties from objects into distinct variables.
+
+**Q4:** How do you swap two variables using array destructuring?
+**A:**
+
+```js
+let a = 1,
+  b = 2;
+[a, b] = [b, a];
+```
+
+---
+
+## Promises
+
+**Q5:** What is a Promise?
+**A:** A Promise represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+
+**Q6:** What are the states of a Promise?
+**A:** Pending, Fulfilled (Resolved), and Rejected.
+
+---
+
+## Async/Await
+
+**Q7:** How is async/await related to promises?
+**A:** `async/await` is syntactic sugar over promises, allowing asynchronous code to be written in a synchronous style.
+
+**Q8:** Can you use await outside an async function?
+**A:** No, `await` can only be used inside `async` functions.
+
+---
+
+## Working with JSON
+
+**Q9:** How do you convert a JavaScript object to a JSON string?
+**A:** Use `JSON.stringify(object)`.
+
+**Q10:** How do you convert a JSON string to a JavaScript object?
+**A:** Use `JSON.parse(jsonString)`.
+
+---
+
+## Process Data with Array Methods
+
+**Q11:** Name some common array methods used to process data.
+**A:** `.map()`, `.filter()`, `.reduce()`, `.forEach()`, `.find()`, `.some()`, `.every()`.
+
+**Q12:** What does `.reduce()` do?
+**A:** It reduces an array to a single value by applying a function to each element and accumulating the result.
+
+---
+
+## Practice: Fetch Data with Promises
+
+**Q13:** How do you fetch data from an API using `fetch`?
+**A:**
+
+```js
+fetch("https://api.example.com/data")
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((error) => console.error(error));
+```
+
+**Q14:** How would you write the above code using async/await?
+**A:**
+
+```js
+async function getData() {
+  try {
+    const response = await fetch("https://api.example.com/data");
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+getData();
+```
+
+---
+
+## HTML — Layout, Structure, Semantic Tags
+
+**Q15:** What are semantic HTML tags? Give examples.
+**A:** Semantic tags clearly describe their meaning, e.g., `<header>`, `<footer>`, `<article>`, `<section>`, `<nav>`, `<aside>`.
+
+**Q16:** Why use semantic tags?
+**A:** They improve accessibility, SEO, and make code more readable.
+
+---
+
+## HTML, CSS, JS, ReactJS, NodeJS
+
+**Q17:** What is the difference between HTML, CSS, and JavaScript?
+**A:**
+
+- HTML structures the content.
+- CSS styles the content.
+- JavaScript adds interactivity.
+
+**Q18:** What is ReactJS?
+**A:** A JavaScript library for building user interfaces with reusable components and a virtual DOM for efficient rendering.
+
+**Q19:** What is Node.js?
+**A:** A runtime environment that allows running JavaScript code on the server side.
+
+**Q20:** How do React and Node.js work together?
+**A:** React runs on the client side (frontend) and Node.js runs on the server side (backend). React can make API calls to Node.js backend services.
+
+---
