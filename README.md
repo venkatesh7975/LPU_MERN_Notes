@@ -9,4 +9,4 @@ https://docs.google.com/spreadsheets/d/1OBg3gzKlJ6b-MfVMNEcoqUt9ur3zgwbxO-eC4As6
 
 
 Daily live coding vscode liveshare:
-https://prod.liveshare.vsengsaas.visualstudio.com/join?AAAE96BB79BC0810AAA0EE1C1102C2DE3A5B
+https://prod.liveshare.vsengsaas.visualstudio.com/join?F31BA3E66A5FA54C5AF98E8FF17477C806BA
