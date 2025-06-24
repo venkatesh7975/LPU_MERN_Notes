@@ -1,0 +1,14 @@
+reactjs setup,project structure 
+
+mpa 
+
+how to access files from different folder in different levels
+
+how to push github and how to host 
+
+19.2.3
+
+how to make request to server and how to get response =>how to display that response on the 
+website
+
+foreach
