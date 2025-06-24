@@ -1,0 +1,195 @@
+## 🔷 1. **ReactJS Overview**
+
+**React.js** is a JavaScript library for building **user interfaces**, especially **single-page applications**.
+It uses a **component-based architecture**, allowing reusable, maintainable code.
+
+### 🔑 Key Features:
+
+- Declarative UI
+- Component-based
+- Virtual DOM
+- Fast rendering
+- JSX (JavaScript + HTML syntax)
+
+---
+
+## 🔷 2. **JSX (JavaScript XML)**
+
+JSX allows writing HTML inside JavaScript.
+
+```jsx
+const element = <h1>Hello, Venkatesh!</h1>;
+```
+
+JSX gets compiled to:
+
+```js
+React.createElement("h1", null, "Hello, Venkatesh!");
+```
+
+---
+
+## 🔷 3. **useState Hook**
+
+`useState` is a React Hook that lets you create **state variables** in a functional component.
+
+### 🔹 Syntax:
+
+```jsx
+const [stateVariable, setStateVariable] = useState(initialValue);
+```
+
+### 🔹 Example:
+
+```jsx
+import React, { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>Count is: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+
+---
+
+## 🔷 4. **Event Handling**
+
+React uses camelCase for event names like `onClick`, `onChange`, etc.
+
+---
+
+### ✅ `onClick` Event
+
+Handles a click on a button or element.
+
+```jsx
+function App() {
+  const handleClick = () => {
+    alert("Button clicked!");
+  };
+
+  return <button onClick={handleClick}>Click Me</button>;
+}
+```
+
+---
+
+### ✅ `onChange` Event
+
+Handles changes in input fields (textboxes, selects, etc.).
+
+```jsx
+function App() {
+  const [text, setText] = useState("");
+
+  const handleChange = (e) => {
+    setText(e.target.value);
+  };
+
+  return <input type="text" value={text} onChange={handleChange} />;
+}
+```
+
+---
+
+## 🔷 5. **State in React**
+
+**State** is a built-in object that stores data that changes over time. When the state changes, the component re-renders.
+
+### 🔑 Key Points:
+
+- Managed using `useState` in functional components.
+- Never mutate state directly (`stateVar = value` ❌)
+- Use the `setState` function
+
+---
+
+## 🔷 6. **Props (Properties)**
+
+**Props** are how data is passed from a **parent** component to a **child** component.
+
+### 🔹 Example:
+
+```jsx
+function Greeting(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+function App() {
+  return <Greeting name="Venkatesh" />;
+}
+```
+
+Here, `"Venkatesh"` is passed as a prop to the `Greeting` component.
+
+---
+
+## 🔷 7. **Parent vs Child Components**
+
+### ✅ Parent Component
+
+- Owns and manages state
+- Sends data to child using `props`
+
+### ✅ Child Component
+
+- Receives data from parent using `props`
+- Can send data back via functions passed as props
+
+### 🔹 Example:
+
+```jsx
+// Child.js
+function Child({ message, onReply }) {
+  return (
+    <div>
+      <p>{message}</p>
+      <button onClick={() => onReply("Thanks, Parent!")}>Reply</button>
+    </div>
+  );
+}
+
+// App.js
+import Child from "./Child";
+
+function App() {
+  const handleReply = (msg) => {
+    console.log("Child says:", msg);
+  };
+
+  return <Child message="Hello from parent!" onReply={handleReply} />;
+}
+```
+
+---
+
+## 🔷 8. **Component Communication**
+
+| Communication Type   | How?                   |
+| -------------------- | ---------------------- |
+| Parent → Child       | via `props`            |
+| Child → Parent       | via callback functions |
+| Sibling ↔ Sibling    | Lift state to parent   |
+| Global State Sharing | Context API / Redux    |
+
+---
+
+## ✅ Summary Table
+
+| Concept        | Purpose                             |
+| -------------- | ----------------------------------- |
+| `useState`     | Create local state                  |
+| `onClick`      | Handle click events                 |
+| `onChange`     | Handle input field updates          |
+| `props`        | Pass data from parent to child      |
+| Parent ↔ Child | Communicate using props + callbacks |
+| JSX            | Write HTML-like syntax in JS        |
+| State          | Store component data that changes   |
+
+---
