@@ -6,7 +6,8 @@ https://docs.google.com/spreadsheets/d/1y3r3tBHxI03YFnRKn8o466GItJUHp_WxKIZW5rmg
 Project Excel link:
 https://docs.google.com/spreadsheets/d/1OBg3gzKlJ6b-MfVMNEcoqUt9ur3zgwbxO-eC4As663s/edit?usp=sharing
 
-
+reference project list:
+https://docs.google.com/spreadsheets/d/1VE_kW5k8yo2f4OBYbWN4mt16mCy6g77BCpEe0-qVx5U/edit?gid=0#gid=0
 
 Daily live coding vscode liveshare:
 https://prod.liveshare.vsengsaas.visualstudio.com/join?F31BA3E66A5FA54C5AF98E8FF17477C806BA
