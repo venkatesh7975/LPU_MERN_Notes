@@ -1,0 +1,10 @@
+ 
+import { useNavigate } from 'react-router-dom';
+const navigate=useNavigate();
+navigate('/login');
+
+const user={username,email,password};
+
+  localStorage.setItem("user",JSON.stringify(user));
+
+ const user=JSON.parse(localStorage.getItem("user"));
