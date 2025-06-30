@@ -1,0 +1,28 @@
+ Introduction to Node.js and Event-Driven Architecture 
+● Modules and npm (Package Management) 
+● File System Operations 
+● Hands-On: Build a File Reader App 
+● Practice: Create Custom Modules 
+
+
+
+ Setting up Express.js 
+● Routing, Middleware, and HTTP Methods 
+● Serving Static Files 
+● Hands-On: Create a Simple Express Server 
+● Practice: Add Routes for a Mock API 
+
+
+ Using Mongoose for MongoDB Integration 
+● Defining Schemas and Models 
+● Performing CRUD Operations 
+● Hands-On: Build a User Database 
+● Practice: Add Validation 
+
+
+
+Error Handling and Validation 
+● Environment Variables and Configuration 
+● RESTful API Design Principles 
+● Hands-On: Enhance an API with Middleware 
+● Practice: Secure Routes 
