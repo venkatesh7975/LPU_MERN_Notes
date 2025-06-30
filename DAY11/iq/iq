@@ -1,0 +1,1412 @@
+Absolutely! Here's a curated list of **most important interview questions, MongoDB queries, and practical problems** based on the Fakestore API product schema you shared. These focus on concepts employers commonly test — querying, aggregation, indexing, updates, optimization, and problem-solving.
+
+---
+
+# Interview Questions & Problems on Fakestore Products DB
+
+---
+
+## 1. Basic Find Queries
+
+**Q1:** Find all products priced between 50 and 150.
+
+```js
+db.products.find({ price: { $gte: 50, $lte: 150 } });
+```
+
+---
+
+**Q2:** Find all products in category "electronics" sorted by price descending.
+
+```js
+db.products.find({ category: "electronics" }).sort({ price: -1 });
+```
+
+---
+
+**Q3:** Find products with a rating.rate greater than 4.0.
+
+```js
+db.products.find({ "rating.rate": { $gt: 4.0 } });
+```
+
+---
+
+## 2. Aggregation Pipeline
+
+**Q4:** Calculate average price per category.
+
+```js
+db.products.aggregate([
+  { $group: { _id: "$category", avgPrice: { $avg: "$price" } } },
+]);
+```
+
+---
+
+**Q5:** List categories with total number of products and average rating.
+
+```js
+db.products.aggregate([
+  {
+    $group: {
+      _id: "$category",
+      count: { $sum: 1 },
+      avgRating: { $avg: "$rating.rate" },
+    },
+  },
+]);
+```
+
+---
+
+**Q6:** Find the most expensive product in each category.
+
+```js
+db.products.aggregate([
+  { $sort: { category: 1, price: -1 } },
+  {
+    $group: {
+      _id: "$category",
+      mostExpensive: { $first: "$$ROOT" },
+    },
+  },
+  {
+    $project: {
+      category: "$_id",
+      productTitle: "$mostExpensive.title",
+      price: "$mostExpensive.price",
+    },
+  },
+]);
+```
+
+---
+
+## 3. Indexing and Optimization
+
+**Q7:** How would you optimize queries on category and price?
+
+- Create a compound index:
+
+```js
+db.products.createIndex({ category: 1, price: -1 });
+```
+
+---
+
+**Q8:** How to create a full-text search index on `title` and `description`?
+
+```js
+db.products.createIndex({ title: "text", description: "text" });
+```
+
+---
+
+## 4. Update Operations
+
+**Q9:** Increase price by 10% for all products in category "men's clothing".
+
+```js
+db.products.updateMany({ category: "men's clothing" }, [
+  { $set: { price: { $multiply: ["$price", 1.1] } } },
+]);
+```
+
+---
+
+**Q10:** Add a new field `discount` set to `true` for products priced above 100.
+
+```js
+db.products.updateMany({ price: { $gt: 100 } }, { $set: { discount: true } });
+```
+
+---
+
+**Q11:** Remove the `discount` field from all documents.
+
+```js
+db.products.updateMany({}, { $unset: { discount: "" } });
+```
+
+---
+
+## 5. Complex Query Problems
+
+**Q12:** Find products where the rating count is higher than the price.
+
+```js
+db.products.find({
+  $expr: { $gt: ["$rating.count", "$price"] },
+});
+```
+
+---
+
+**Q13:** Retrieve products where the price is at least twice the rating.rate.
+
+```js
+db.products.find({
+  $expr: { $gte: ["$price", { $multiply: ["$rating.rate", 2] }] },
+});
+```
+
+---
+
+**Q14:** Find top 5 products with the highest rating.rate and sort by price ascending.
+
+```js
+db.products.find().sort({ "rating.rate": -1, price: 1 }).limit(5);
+```
+
+---
+
+**Q15:** Find all products whose description contains the word "perfect" (case insensitive).
+
+```js
+db.products.find({ description: /perfect/i });
+```
+
+---
+
+## 6. Aggregation with Conditional Logic
+
+**Q16:** Add a field `priceCategory` which is "cheap" if price < 50, "moderate" if between 50 and 150, else "expensive".
+
+```js
+db.products.aggregate([
+  {
+    $addFields: {
+      priceCategory: {
+        $switch: {
+          branches: [
+            { case: { $lt: ["$price", 50] }, then: "cheap" },
+            {
+              case: {
+                $and: [{ $gte: ["$price", 50] }, { $lte: ["$price", 150] }],
+              },
+              then: "moderate",
+            },
+          ],
+          default: "expensive",
+        },
+      },
+    },
+  },
+]);
+```
+
+---
+
+## 7. Array & Nested Field Queries
+
+**Q17:** Add tag "sale" to products priced above 100.
+
+```js
+db.products.updateMany(
+  { price: { $gt: 100 } },
+  { $addToSet: { tags: "sale" } }
+);
+```
+
+---
+
+**Q18:** Find products that have the tag "sale".
+
+```js
+db.products.find({ tags: "sale" });
+```
+
+---
+
+## 8. Pagination & Sorting
+
+**Q19:** Retrieve products sorted by price descending, page 3, with 10 products per page.
+
+```js
+const page = 3;
+const limit = 10;
+
+db.products
+  .find()
+  .sort({ price: -1 })
+  .skip((page - 1) * limit)
+  .limit(limit);
+```
+
+---
+
+## 9. Data Modeling & Schema Design
+
+**Q20:** How would you handle product reviews in this schema?
+
+- Store reviews as an array of subdocuments inside each product:
+
+```js
+{
+  id: 1,
+  title: "...",
+  reviews: [
+    { user: "John", rating: 5, comment: "Great product!" },
+    { user: "Jane", rating: 4, comment: "Good value." }
+  ]
+}
+```
+
+---
+
+## 10. Performance & Scalability Questions
+
+**Q21:** How can you scale the products collection when it grows to millions of documents?
+
+- Sharding by category or product ID
+- Proper indexing on frequently queried fields (price, category, rating)
+- Using aggregation pipelines efficiently
+- Avoid large embedded arrays or documents (limit size)
+
+---
+
+# Bonus Practical Problems
+
+---
+
+### Problem 1: Calculate total revenue for all products (price \* rating.count)
+
+```js
+db.products.aggregate([
+  {
+    $project: {
+      revenue: { $multiply: ["$price", "$rating.count"] },
+    },
+  },
+  {
+    $group: {
+      _id: null,
+      totalRevenue: { $sum: "$revenue" },
+    },
+  },
+]);
+```
+
+---
+
+### Problem 2: Find categories with no products priced above 100.
+
+```js
+db.products.aggregate([
+  {
+    $group: {
+      _id: "$category",
+      expensiveCount: { $sum: { $cond: [{ $gt: ["$price", 100] }, 1, 0] } },
+    },
+  },
+  {
+    $match: { expensiveCount: 0 },
+  },
+]);
+```
+
+---
+
+### Problem 3: Find products with the lowest rating.rate in each category.
+
+```js
+db.products.aggregate([
+  {
+    $group: {
+      _id: "$category",
+      minRating: { $min: "$rating.rate" },
+    },
+  },
+]);
+```
+
+---
+
+### Problem 4: Update all products to include a `lastModified` timestamp with the current date.
+
+```js
+db.products.updateMany({}, { $currentDate: { lastModified: true } });
+```
+
+---
+
+### Problem 5: Delete all products with rating.count less than 10.
+
+```js
+db.products.deleteMany({ "rating.count": { $lt: 10 } });
+```
+
+---
+
+# Quick Interview Prep Tips
+
+- Understand **difference between find() and aggregate()**. Aggregate is for data transformation and grouping.
+- Use **indexes** to optimize queries — explain when and why to create them.
+- Know how to **update nested fields** and use operators like `$inc`, `$set`, `$unset`, `$addToSet`.
+- Practice **pagination** with `skip` and `limit`.
+- Be comfortable with **aggregation stages** like `$match`, `$group`, `$sort`, `$project`, `$lookup`, `$facet`.
+- Understand **MongoDB data types** (string, number, date, array, object).
+- Familiarize with **text search** and **regex** queries.
+- Know how to **handle missing fields** with `$exists` and `$ifNull`.
+- Be prepared for **schema design discussions**, especially embedding vs referencing.
+
+---
+
+If you want, I can generate detailed solutions, explanations, or even mini projects based on this data for interview prep. Just ask!
+Sure! Here’s an extensive list of **100 important MongoDB queries and problems** based on the Fakestore API product schema, **with explanations and answers** to help you master interview-level questions and MongoDB fundamentals deeply.
+
+---
+
+# 100 MongoDB Queries + Explanations for Fakestore Products
+
+---
+
+### Schema reminder:
+
+```json
+{
+  "id": 1,
+  "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+  "price": 109.95,
+  "description": "...",
+  "category": "men's clothing",
+  "image": "...",
+  "rating": {
+    "rate": 3.9,
+    "count": 120
+  }
+}
+```
+
+---
+
+## 1. Find all products in the "electronics" category.
+
+```js
+db.products.find({ category: "electronics" });
+```
+
+**Explanation:** Simple equality match filtering by category field.
+
+---
+
+## 2. Find all products with price less than 100.
+
+```js
+db.products.find({ price: { $lt: 100 } });
+```
+
+**Explanation:** Uses `$lt` (less than) comparison operator.
+
+---
+
+## 3. Find all products with price between 50 and 150 inclusive.
+
+```js
+db.products.find({ price: { $gte: 50, $lte: 150 } });
+```
+
+**Explanation:** Uses `$gte` and `$lte` for inclusive range filtering.
+
+---
+
+## 4. Find products with rating.rate greater than 4.
+
+```js
+db.products.find({ "rating.rate": { $gt: 4 } });
+```
+
+**Explanation:** Dot notation accesses nested fields.
+
+---
+
+## 5. Find all products that have rating.count greater than or equal to 100.
+
+```js
+db.products.find({ "rating.count": { $gte: 100 } });
+```
+
+---
+
+## 6. Find all products with price not equal to 100.
+
+```js
+db.products.find({ price: { $ne: 100 } });
+```
+
+---
+
+## 7. Find products whose title contains the word "backpack" (case insensitive).
+
+```js
+db.products.find({ title: /backpack/i });
+```
+
+**Explanation:** Regex for pattern matching with case insensitive flag.
+
+---
+
+## 8. Sort all products by price ascending.
+
+```js
+db.products.find().sort({ price: 1 });
+```
+
+---
+
+## 9. Sort all products by rating.rate descending.
+
+```js
+db.products.find().sort({ "rating.rate": -1 });
+```
+
+---
+
+## 10. Find top 5 most expensive products.
+
+```js
+db.products.find().sort({ price: -1 }).limit(5);
+```
+
+---
+
+## 11. Find products that belong to either "men's clothing" or "women's clothing".
+
+```js
+db.products.find({ category: { $in: ["men's clothing", "women's clothing"] } });
+```
+
+---
+
+## 12. Find products that do not belong to "electronics" category.
+
+```js
+db.products.find({ category: { $ne: "electronics" } });
+```
+
+---
+
+## 13. Find products where description length is greater than 100 characters.
+
+```js
+db.products.aggregate([
+  {
+    $project: {
+      title: 1,
+      descLength: { $strLenCP: "$description" },
+    },
+  },
+  { $match: { descLength: { $gt: 100 } } },
+]);
+```
+
+**Explanation:** `$strLenCP` calculates string length, `$project` reshapes document.
+
+---
+
+## 14. Count total number of products.
+
+```js
+db.products.countDocuments();
+```
+
+---
+
+## 15. Count products in category "jewelery".
+
+```js
+db.products.countDocuments({ category: "jewelery" });
+```
+
+---
+
+## 16. Find products with no discount field.
+
+```js
+db.products.find({ discount: { $exists: false } });
+```
+
+---
+
+## 17. Find products with discount field set to true.
+
+```js
+db.products.find({ discount: true });
+```
+
+---
+
+## 18. Add a discount field to all products with price > 100.
+
+```js
+db.products.updateMany({ price: { $gt: 100 } }, { $set: { discount: true } });
+```
+
+---
+
+## 19. Remove discount field from all products.
+
+```js
+db.products.updateMany({}, { $unset: { discount: "" } });
+```
+
+---
+
+## 20. Increase price by 10 for all products.
+
+```js
+db.products.updateMany({}, { $inc: { price: 10 } });
+```
+
+---
+
+## 21. Replace all prices by rounding them to nearest integer.
+
+```js
+db.products.updateMany({}, [{ $set: { price: { $round: ["$price", 0] } } }]);
+```
+
+---
+
+## 22. Find products where price is greater than rating.rate multiplied by 20.
+
+```js
+db.products.find({
+  $expr: { $gt: ["$price", { $multiply: ["$rating.rate", 20] }] },
+});
+```
+
+**Explanation:** `$expr` allows field comparisons inside a query.
+
+---
+
+## 23. Find products with missing rating field.
+
+```js
+db.products.find({ rating: { $exists: false } });
+```
+
+---
+
+## 24. Find products with rating.rate equal to 4 or rating.count greater than 200.
+
+```js
+db.products.find({
+  $or: [{ "rating.rate": 4 }, { "rating.count": { $gt: 200 } }],
+});
+```
+
+---
+
+## 25. Get distinct categories from products.
+
+```js
+db.products.distinct("category");
+```
+
+---
+
+## 26. Aggregate average rating.rate per category.
+
+```js
+db.products.aggregate([
+  { $group: { _id: "$category", avgRating: { $avg: "$rating.rate" } } },
+]);
+```
+
+---
+
+## 27. Aggregate max price per category.
+
+```js
+db.products.aggregate([
+  { $group: { _id: "$category", maxPrice: { $max: "$price" } } },
+]);
+```
+
+---
+
+## 28. Aggregate min rating.count per category.
+
+```js
+db.products.aggregate([
+  { $group: { _id: "$category", minRatingCount: { $min: "$rating.count" } } },
+]);
+```
+
+---
+
+## 29. Group products by category and count how many have price > 100.
+
+```js
+db.products.aggregate([
+  {
+    $group: {
+      _id: "$category",
+      expensiveCount: {
+        $sum: { $cond: [{ $gt: ["$price", 100] }, 1, 0] },
+      },
+    },
+  },
+]);
+```
+
+---
+
+## 30. Find average price and rating for products with rating.count > 100.
+
+```js
+db.products.aggregate([
+  { $match: { "rating.count": { $gt: 100 } } },
+  {
+    $group: {
+      _id: null,
+      avgPrice: { $avg: "$price" },
+      avgRating: { $avg: "$rating.rate" },
+    },
+  },
+]);
+```
+
+---
+
+## 31. Find products whose price is a multiple of 50.
+
+```js
+db.products.find({
+  $expr: { $eq: [{ $mod: ["$price", 50] }, 0] },
+});
+```
+
+---
+
+## 32. Find products whose rating.count is between 50 and 150.
+
+```js
+db.products.find({ "rating.count": { $gte: 50, $lte: 150 } });
+```
+
+---
+
+## 33. Find products whose price is either less than 50 or greater than 200.
+
+```js
+db.products.find({
+  $or: [{ price: { $lt: 50 } }, { price: { $gt: 200 } }],
+});
+```
+
+---
+
+## 34. Find products where the title starts with letter "F".
+
+```js
+db.products.find({ title: /^F/ });
+```
+
+---
+
+## 35. Find products where the description ends with a period.
+
+```js
+db.products.find({ description: /\.$/ });
+```
+
+---
+
+## 36. Find all products sorted by title alphabetically.
+
+```js
+db.products.find().sort({ title: 1 });
+```
+
+---
+
+## 37. Find the product with the highest rating.rate.
+
+```js
+db.products.find().sort({ "rating.rate": -1 }).limit(1);
+```
+
+---
+
+## 38. Find the product with the lowest price.
+
+```js
+db.products.find().sort({ price: 1 }).limit(1);
+```
+
+---
+
+## 39. Project only title and price for all products.
+
+```js
+db.products.find({}, { title: 1, price: 1, _id: 0 });
+```
+
+---
+
+## 40. Project title, price, and add a new field called priceWithTax (price + 18%).
+
+```js
+db.products.aggregate([
+  {
+    $project: {
+      title: 1,
+      price: 1,
+      priceWithTax: { $multiply: ["$price", 1.18] },
+    },
+  },
+]);
+```
+
+---
+
+## 41. Aggregate total revenue by summing price \* rating.count.
+
+```js
+db.products.aggregate([
+  {
+    $project: {
+      revenue: { $multiply: ["$price", "$rating.count"] },
+    },
+  },
+  {
+    $group: {
+      _id: null,
+      totalRevenue: { $sum: "$revenue" },
+    },
+  },
+]);
+```
+
+---
+
+## 42. Add a new field called "stock" defaulting to 100 for all products.
+
+```js
+db.products.updateMany({}, { $set: { stock: 100 } });
+```
+
+---
+
+## 43. Increase stock by 20 for all products priced above 150.
+
+```js
+db.products.updateMany({ price: { $gt: 150 } }, { $inc: { stock: 20 } });
+```
+
+---
+
+## 44. Delete all products where stock is less than 10.
+
+```js
+db.products.deleteMany({ stock: { $lt: 10 } });
+```
+
+---
+
+## 45. Create a text index on title and description.
+
+```js
+db.products.createIndex({ title: "text", description: "text" });
+```
+
+---
+
+## 46. Find products matching text search "backpack".
+
+```js
+db.products.find({ $text: { $search: "backpack" } });
+```
+
+---
+
+## 47. Sort products by text search score.
+
+```js
+db.products
+  .find({ $text: { $search: "backpack" } }, { score: { $meta: "textScore" } })
+  .sort({ score: { $meta: "textScore" } });
+```
+
+---
+
+## 48. Find products with rating.rate not equal to 3.9.
+
+```js
+db.products.find({ "rating.rate": { $ne: 3.9 } });
+```
+
+---
+
+## 49. Find products whose description contains "forest".
+
+```js
+db.products.find({ description: /forest/i });
+```
+
+---
+
+## 50. Find products where tags array contains "new".
+
+```js
+db.products.find({ tags: "new" });
+```
+
+---
+
+## 51. Add a tag "sale" to products priced below 100.
+
+```js
+db.products.updateMany(
+  { price: { $lt: 100 } },
+  { $addToSet: { tags: "sale" } }
+);
+```
+
+---
+
+## 52. Remove tag "sale" from all products.
+
+```js
+db.products.updateMany({}, { $pull: { tags: "sale" } });
+```
+
+---
+
+## 53. Find products with exactly 3 tags.
+
+```js
+db.products.find({ tags: { $size: 3 } });
+```
+
+---
+
+## 54. Project only products with title and number of tags.
+
+```js
+db.products.aggregate([
+  {
+    $project: {
+      title: 1,
+      tagsCount: { $size: { $ifNull: ["$tags", []] } },
+    },
+  },
+]);
+```
+
+---
+
+## 55. Sort products by tags count descending.
+
+```js
+db.products.aggregate([
+  {
+    $addFields: {
+      tagsCount: { $size: { $ifNull: ["$tags", []] } },
+    },
+  },
+  { $sort: { tagsCount: -1 } },
+]);
+```
+
+---
+
+## 56. Find products with price rounded to nearest 10 (e.g. 100, 110, 120).
+
+```js
+db.products.find({
+  $expr: { $eq: [{ $mod: [{ $round: ["$price", 0] }, 10] }, 0] },
+});
+```
+
+---
+
+## 57. Find products added within the last 30 days (assuming a `createdAt` field).
+
+```js
+const thirtyDaysAgo = new Date();
+thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+db.products.find({ createdAt: { $gte: thirtyDaysAgo } });
+```
+
+---
+
+## 58. Create TTL index on `createdAt` to auto-delete after 60 days.
+
+```js
+db.products.createIndex({ createdAt: 1 }, { expireAfterSeconds: 5184000 });
+```
+
+---
+
+## 59. Find products with price as a whole number (no decimals).
+
+```js
+db.products.find({
+  $expr: { $eq: ["$price", { $trunc: "$price" }] },
+});
+```
+
+---
+
+## 60. Find all products that do not have the `tags` field.
+
+```js
+db.products.find({ tags: { $exists: false } });
+```
+
+---
+
+## 61. Create compound index on category and price.
+
+```js
+db.products.createIndex({ category: 1, price: -1 });
+```
+
+---
+
+## 62. Explain the query plan for finding products in "electronics".
+
+```js
+db.products.find({ category: "electronics" }).explain("executionStats");
+```
+
+---
+
+## 63. Count number of products with price > 200.
+
+```js
+db.products.countDocuments({ price: { $gt: 200 } });
+```
+
+---
+
+## 64. Find products with rating.rate between 3.5 and 4.5.
+
+```js
+db.products.find({ "rating.rate": { $gte: 3.5, $lte: 4.5 } });
+```
+
+---
+
+## 65. Update rating.rate of product with id=5 to 4.8.
+
+```js
+db.products.updateOne({ id: 5 }, { $set: { "rating.rate": 4.8 } });
+```
+
+---
+
+## 66. Find all products and exclude the description field.
+
+```js
+db.products.find({}, { description: 0 });
+```
+
+---
+
+## 67. Use `$facet` to get average price and product count by category.
+
+```js
+db.products.aggregate([
+  {
+    $facet: {
+      avgPriceByCategory: [
+        { $group: { _id: "$category", avgPrice: { $avg: "$price" } } },
+      ],
+      productCountByCategory: [
+        { $group: { _id: "$category", count: { $sum: 1 } } },
+      ],
+    },
+  },
+]);
+```
+
+---
+
+## 68. Find categories with fewer than 3 products.
+
+```js
+db.products.aggregate([
+  {
+    $group: { _id: "$category", count: { $sum: 1 } },
+  },
+  { $match: { count: { $lt: 3 } } },
+]);
+```
+
+---
+
+## 69. Find top 3 rated products.
+
+```js
+db.products.find().sort({ "rating.rate": -1 }).limit(3);
+```
+
+---
+
+## 70. Find average rating.count for all products.
+
+```js
+db.products.aggregate([
+  { $group: { _id: null, avgRatingCount: { $avg: "$rating.count" } } },
+]);
+```
+
+---
+
+## 71. Find products where rating.rate + rating.count is greater than 100.
+
+```js
+db.products.find({
+  $expr: { $gt: [{ $add: ["$rating.rate", "$rating.count"] }, 100] },
+});
+```
+
+---
+
+## 72. Find products with null or missing price.
+
+```js
+db.products.find({
+  $or: [{ price: null }, { price: { $exists: false } }],
+});
+```
+
+---
+
+## 73. Find products whose title contains either "bag" or "backpack".
+
+```js
+db.products.find({ $text: { $search: "bag backpack" } });
+```
+
+---
+
+## 74. Find products where description does NOT contain "forest".
+
+```js
+db.products.find({ description: { $not: /forest/i } });
+```
+
+---
+
+## 75. Find products with "rating" field existing but "rating.count" missing.
+
+```js
+db.products.find({
+  rating: { $exists: true },
+  "rating.count": { $exists: false },
+});
+```
+
+---
+
+## 76. Find products grouped by category with average rating and total rating count.
+
+```js
+db.products.aggregate([
+  {
+    $group: {
+      _id: "$category",
+      avgRating: { $avg: "$rating.rate" },
+      totalRatingCount: { $sum: "$rating.count" },
+    },
+  },
+]);
+```
+
+---
+
+## 77. Find products with price not a number (NaN).
+
+```js
+db;
+```
+
+.products.find({ price: { \$type: "nan" } });
+
+````
+
+---
+
+## 78. Find products whose price field is a string instead of a number.
+
+```js
+db.products.find({ price: { $type: "string" } });
+````
+
+---
+
+## 79. Update product with id=1 to add a new field `lastUpdated` with current date.
+
+```js
+db.products.updateOne({ id: 1 }, { $set: { lastUpdated: new Date() } });
+```
+
+---
+
+## 80. Find products that were updated in the last 7 days (using `lastUpdated` field).
+
+```js
+const lastWeek = new Date();
+lastWeek.setDate(lastWeek.getDate() - 7);
+
+db.products.find({ lastUpdated: { $gte: lastWeek } });
+```
+
+---
+
+## 81. Find products whose price rounded down is greater than 50.
+
+```js
+db.products.find({
+  $expr: { $gt: [{ $floor: "$price" }, 50] },
+});
+```
+
+---
+
+## 82. Find all products where the rating.rate field exists.
+
+```js
+db.products.find({ "rating.rate": { $exists: true } });
+```
+
+---
+
+## 83. Find all products where the rating.rate field is missing or null.
+
+```js
+db.products.find({
+  $or: [{ "rating.rate": { $exists: false } }, { "rating.rate": null }],
+});
+```
+
+---
+
+## 84. Rename the field `category` to `productCategory`.
+
+```js
+db.products.updateMany({}, { $rename: { category: "productCategory" } });
+```
+
+---
+
+## 85. Add a compound index on price ascending and rating.rate descending.
+
+```js
+db.products.createIndex({ price: 1, "rating.rate": -1 });
+```
+
+---
+
+## 86. Explain how indexes improve the following query:
+
+```js
+db.products.find({ price: { $gt: 100 } });
+```
+
+**Answer:**
+An index on `price` allows MongoDB to quickly locate documents with price > 100 without scanning the entire collection, reducing query time.
+
+---
+
+## 87. Find the median price of all products. _(Advanced)_
+
+```js
+db.products.aggregate([
+  { $sort: { price: 1 } },
+  {
+    $group: {
+      _id: null,
+      prices: { $push: "$price" },
+      count: { $sum: 1 },
+    },
+  },
+  {
+    $project: {
+      medianPrice: {
+        $let: {
+          vars: {
+            mid: { $divide: ["$count", 2] },
+          },
+          in: {
+            $cond: [
+              { $eq: [{ $mod: ["$count", 2] }, 0] },
+              {
+                $avg: [
+                  { $arrayElemAt: ["$prices", { $subtract: ["$$mid", 1] }] },
+                  { $arrayElemAt: ["$prices", "$$mid"] },
+                ],
+              },
+              { $arrayElemAt: ["$prices", { $floor: "$$mid" }] },
+            ],
+          },
+        },
+      },
+    },
+  },
+]);
+```
+
+---
+
+## 88. Find products whose price is a prime number. _(Conceptual)_
+
+**Answer:** MongoDB does not have built-in prime detection. You would need to either:
+
+- Use an external script to preprocess
+- Use `$function` (MongoDB 4.4+) with custom JavaScript prime-checking logic inside aggregation pipeline.
+
+---
+
+## 89. Use `$lookup` to join products with another collection `suppliers` on supplierId. _(Conceptual)_
+
+```js
+db.products.aggregate([
+  {
+    $lookup: {
+      from: "suppliers",
+      localField: "supplierId",
+      foreignField: "id",
+      as: "supplierDetails",
+    },
+  },
+]);
+```
+
+---
+
+## 90. Find duplicate products by title.
+
+```js
+db.products.aggregate([
+  {
+    $group: {
+      _id: "$title",
+      count: { $sum: 1 },
+      docs: { $push: "$$ROOT" },
+    },
+  },
+  { $match: { count: { $gt: 1 } } },
+]);
+```
+
+---
+
+## 91. Remove duplicate products by keeping one document per title. _(Conceptual)_
+
+- Use aggregation above to identify duplicates
+- Delete using `_id` of duplicates except one
+- Or use unique index on `title` with `dropDups` option during creation (deprecated in newer MongoDB versions).
+
+---
+
+## 92. Find products where the `price` field type is integer.
+
+```js
+db.products.find({ price: { $type: "int" } });
+```
+
+---
+
+## 93. Find products where price is stored as double.
+
+```js
+db.products.find({ price: { $type: "double" } });
+```
+
+---
+
+## 94. Find all products grouped by category and sort categories by product count descending.
+
+```js
+db.products.aggregate([
+  {
+    $group: {
+      _id: "$category",
+      count: { $sum: 1 },
+    },
+  },
+  { $sort: { count: -1 } },
+]);
+```
+
+---
+
+## 95. Update price to 0 for products where price field is missing.
+
+```js
+db.products.updateMany({ price: { $exists: false } }, { $set: { price: 0 } });
+```
+
+---
+
+## 96. Find products where description contains at least one digit.
+
+```js
+db.products.find({ description: /\d/ });
+```
+
+---
+
+## 97. Use `$sample` to retrieve 3 random products.
+
+```js
+db.products.aggregate([{ $sample: { size: 3 } }]);
+```
+
+---
+
+## 98. Find all products with rating.rate within 1 standard deviation of average rating.rate. _(Conceptual)_
+
+- Calculate average and std dev with aggregation `$group` stage
+- Filter with `$match` based on those values in a two-step query.
+
+---
+
+## 99. Count products with no image URL or empty image field.
+
+```js
+db.products.countDocuments({
+  $or: [{ image: { $exists: false } }, { image: "" }],
+});
+```
+
+---
+
+## 100. Find products where the title length is greater than 30.
+
+```js
+db.products.aggregate([
+  {
+    $project: {
+      title: 1,
+      titleLength: { $strLenCP: "$title" },
+    },
+  },
+  { $match: { titleLength: { $gt: 30 } } },
+]);
+```
+
+---
+
+# Bonus: Tips for Interview Preparation
+
+- Always **explain your approach** for indexing and optimization.
+- Be comfortable with both **simple find queries and aggregation pipelines**.
+- Know when to use **updateOne vs updateMany**.
+- Practice **array operations**: `$addToSet`, `$push`, `$pull`, `$size`.
+- Understand **MongoDB data types** and how to query on them.
+- Know how to **use regex and text search** effectively.
+- Be ready to **design schema for scalability** and performance.
+- Practice **explain plans** and analyze slow queries.
+
+---
+
+If you want, I can also generate explanations or code for any of these queries or problems in detail! Would you like that?

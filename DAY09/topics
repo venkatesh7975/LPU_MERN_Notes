@@ -1,16 +1,13 @@
 fetch the data from the server 
 display on the website 
 
-<<<<<<< HEAD
 filter and sorting 
 
 Routing 
 dynamic routing
-=======
-filter and 
+
 
 useEffect,tailwindcss ,
 dynamic routes
 
 
->>>>>>> 8dedb5e (updated day10 and day11)
