@@ -17,4 +17,5 @@ feedback form:any suggestions
 https://docs.google.com/forms/d/1SXnu0ncwfmj4jkP3GoMY5ubETFC1nG1hgu3w52d3T-c/edit?usp=forms_home&ouid=110459454817291895997&ths=true
 
 
-weather api :http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=f88e755f398a8552e99e3c9d0d21cfd9
+weather api :https://api.openweathermap.org/data/2.5/weather?q=London&appid=f88e755f398a8552e99e3c9d0d21cfd9&units=metric
+
