@@ -1,11 +1,25 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  auth,
+  provider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+} from "../firebaseConfig";
 
 export default function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+ async function onGoogleLogin() {
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (err) {
+      console.log(err);
+    }
+  }
   function onPasswordChange(event) {
     setPassword(event.target.value);
   }
@@ -49,6 +63,8 @@ export default function Signin() {
         <br />
         <button>SignIn</button>
       </form>
+      <h1>or</h1>
+      <button onClick={onGoogleLogin}>Sign UP / Sign in with googel</button>
       <p>
         Already have an account? <a href="/">Signup</a>
       </p>
