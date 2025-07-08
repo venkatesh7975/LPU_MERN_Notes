@@ -1,0 +1,142 @@
+registration--->storage the user details
+frontend ->read the details from the user,
+          send those details to server
+ 	  send post request with user details
+backend: storing the user details in db
+         post.api,first read details,
+ 	we store the details in db
+
+,
+login --->verify user details
+frontend->read the user details from the form
+		,send to server
+	   axios.post("api url",{user detail})
+backend->app.post("/",function(req,res){})
+         read the user details -->
+ 	const {email,password}=req.body
+	//check is any user exist or not with email
+        if user exist check password ->correct ,wrong 
+        else:user not found
+
+feedback -->frontend -->send the feedback to the client
+            backend-->read teh feedback ,store db
+
+admin-->frontend-->get 
+        backend: retrieve all feedbacks from db
+                   and send to client
+
+
+
+
+
+
+
+
+
+
+
+
+
+html:how to create elements(content)
+css:how to align ,box properties,flex box, 
+   color,background colors,font size ,font family
+    media querires(responsive websites)
+
+
+js:  variables,datatypes,data types methods,
+     if ,loops,  functions ,fetch,dom 
+
+
+
+reactjs: components,props,state,conditional rendering,
+	hooks(useState,useEFfect),axios(get,post,put,delete)
+
+nodejs:file operations
+expressjs:server creation,api(get,post,put,delete)
+          connecting db to server, perform crud,
+
+
+
+
+
+
+
+
+         
+
+
+
+
+        
+
+
+
+jwt token,
+feedback post,
+admin dashboard,
+protect,
+how to handle get ,post requests and 
+get,post api response
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/venkatesh7975/feedback_backend.git
+git push -u origin main
+
+
+
+
+use mongodb atals in the backend
+push your github
+on render ,web service
+build command:npm install
+start command:node index.js
+env: give the env values
+
+click deplpoy 
+
+
+deploy link  
+
+
+
+
+
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/venkatesh7975/feedback_frontend.git
+git push -u origin main
+
+
+
+todo,ecommerce,blog,
+
+
+
+
+
+
+
