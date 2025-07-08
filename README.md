@@ -10,7 +10,7 @@ reference project list:
 https://docs.google.com/spreadsheets/d/1VE_kW5k8yo2f4OBYbWN4mt16mCy6g77BCpEe0-qVx5U/edit?gid=0#gid=0
 
 Daily live coding vscode liveshare:
-https://prod.liveshare.vsengsaas.visualstudio.com/join?AF29306CFD797EFF9E7128B3214165A64A41
+https://prod.liveshare.vsengsaas.visualstudio.com/join?002909D917262B4A8EE2789631F18490DA0A
 
 feedback form:any suggestions
 
