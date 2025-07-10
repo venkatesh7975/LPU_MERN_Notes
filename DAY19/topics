@@ -1,0 +1,5 @@
+post controller 
+
+how to get allposts with pagination,--->
+how to create post ---->
+middleware --->veriy the token before allowing access to the routes.
