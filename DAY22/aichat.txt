@@ -1,0 +1,113 @@
+ai chatbot : api -->you make a requests-->
+		it will give the response
+
+how to use aitools to build projects
+
+
+sockets 
+
+
+
+
+
+setup aichat (Mern) ,
+1)register ,login (userSchema)
+3)messageSchema(  typeofuserinput:question or answer,
+		content:  )
+
+
+1)input field ,read data from input field
+ when user click button (onclick=onApireq)
+send ()
+ async function  onAPireq(){
+ const res=await axios.post("url",content,header); 
+
+
+}
+
+//import
+//how to define component
+//exporting component
+//declaring state variables
+//events(onSubmit,onCange)
+//how to read data from 
+  input field
+//async func 
+//useState
+//basic content creation 
+//****how to make request
+
+fullstack ---> 
+user registration login --->UserSchema, User api 
+	login api(router.post("/login",function) ,register api
+
+message ---> query(question) content , answer(type), content
+
+
+
+
+
+
+
+
+http requests <------------>http resonse(api.get,postput,delet)
+
+
+
+
+
+1)chat gpt ,
+2)how to resolve errors throug github copilot
+3)cursor ai
+
+
+
+
+phone book:
+
+features: 
+
+add,update,delete,contact
+
+
+
+
+
+
+
+
+project checklist:(mern)
+1)crud operation (features)
+2)authentication 
+ (basic validation ,encrypting passwords)
+((jwt token and its verification)middleware),
+ authorization(protectedroute),
+3)searching ,sorting,pagination 
++++++++++++++++++++
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

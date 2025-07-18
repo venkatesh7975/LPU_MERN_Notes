@@ -1,0 +1,23 @@
+1️⃣ React Project Setup and Folder Structure
+2️⃣ Installing and Managing Packages
+3️⃣ Introduction to Components
+4️⃣ Functional Components and JSX
+5️⃣ Props and Passing Data Between Components
+6️⃣ State Management with useState
+7️⃣ Handling Events in React (onClick, onChange, onSubmit)
+8️⃣ Conditional Rendering in React
+9️⃣ Rendering Lists using map()
+🔟 Filtering Data using filter()
+1️⃣1️⃣ Working with localStorage (Save, Retrieve, Delete)
+1️⃣2️⃣ React Hooks Overview
+1️⃣3️⃣ useEffect for Side Effects and Data Fetching
+1️⃣4️⃣ Styling React Components 
+1️⃣5️⃣ Building Responsive Websites in React ( Media Queries,TAILWINDCSS)
+1️⃣6️⃣ Routing with react-router-dom
+1️⃣7️⃣ Navigation and Link Components
+1️⃣8️⃣ Dynamic Routing with URL Parameters
+1️⃣9️⃣ Protected Routes and Authentication Flow
+2️⃣0️⃣ Sending API Requests (Axios & Fetch API)
+2️⃣1️⃣ CRUD Operations (GET, POST, PUT, DELETE)
+2️⃣2️⃣ Error Handling in React Applications
+

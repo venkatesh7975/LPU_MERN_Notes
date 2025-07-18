@@ -1,0 +1,76 @@
+@media (max-width: 767px) {
+  body {
+    background-color: rgb(213, 32, 132);
+  }
+  h1:hover {
+    color: rgb(214, 194, 194);
+  }
+  .medium {
+    display: none;
+  }
+  .large {
+    display: none;
+  }
+  .extra {
+    display: none;
+  }
+  .click:hover {
+    background-color: green;
+    color: blue;
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    background-color: rgb(32, 213, 132);
+  }
+  h1 {
+    color: green;
+  }
+  .small {
+    display: none;
+  }
+  .large {
+    display: none;
+  }
+  .extra {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1400px) {
+  body {
+    background-color: rgba(229, 246, 72, 0.877);
+  }
+  h1 {
+    color: #d5e1d5;
+  }
+  .medium {
+    display: none;
+  }
+  .extra {
+    display: none;
+  }
+  .small {
+    display: none;
+  }
+}
+
+@media (min-width: 1401px) {
+  body {
+    background-color: rgb(32, 132, 213);
+  }
+  h1 {
+    color: rgb(255, 255, 255);
+  }
+  .medium {
+    display: none;
+  }
+  .large {
+    display: none;
+  }
+  .small {
+    display: none;
+  }
+}

@@ -1,0 +1,15 @@
+FIREBASE AUTHENTICATION WITH GOOGLE
+
+
+routing with react-router-dom 
+
+displaying weather application after user login 
+FEEDBACK PROJECT INITIATION WITH REGISTRATION FORM 
+
+HANDLING FRONTEND AND BACKEND FORM REGISTRATION FORM 
+VALIDATING USER DETAILS ENCRYPTING THE PASSWORD 
+axios 
+
+hosting frontend project on vercel 
+
+bcrypt ,jsonwebtoken ,cors,mongoose,dotenv ,express packages 

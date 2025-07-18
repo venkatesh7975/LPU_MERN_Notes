@@ -1,0 +1,273 @@
+| Method                    | Description                      |
+| ------------------------- | -------------------------------- |
+| `Object.keys(obj)`        | Get all keys                     |
+| `Object.values(obj)`      | Get all values                   |
+| `Object.entries(obj)`     | Key-value pairs as array         |
+| `Object.assign()`         | Merge objects                    |
+| `Object.freeze(obj)`      | Make object immutable            |
+| `Object.seal(obj)`        | Prevent add/delete, allow modify |
+| `Object.hasOwn(obj, key)` | Modern key check                 |
+| `JSON.stringify(obj)`     | Convert to JSON string           |
+| `JSON.parse(str)`         | Convert back to object           |
+| `JSON.stringify(obj, replacer, space)` | Convert to JSON string with options |
+
+Here is your **complete JavaScript Notes on Dot Notation vs Bracket Notation** with detailed **explanations, rules, syntax, comparisons, edge cases, and examples** — perfect for **learning, revising, or teaching**.
+
+---
+
+# 📘 JavaScript Object Property Access: Dot Notation vs Bracket Notation
+
+---
+
+## 🔶 What is a Property in JavaScript?
+
+A **property** is a key-value pair associated with an object.
+
+```js
+const person = {
+  name: "Venkatesh",
+  age: 25
+};
+```
+
+Here, `name` and `age` are **properties** of the `person` object.
+
+---
+
+## 🟢 Dot Notation (`object.property`)
+
+### ✅ Syntax:
+
+```js
+object.propertyName
+```
+
+### ✅ Use When:
+
+* Property names are **valid identifiers**:
+
+  * Only letters, digits, `$`, and `_`
+  * Must not start with a digit
+  * No spaces or special characters
+
+### ✅ Example:
+
+```js
+const user = {
+  name: "John",
+  age: 30
+};
+
+console.log(user.name); // John
+console.log(user.age);  // 30
+```
+
+### 🔴 Invalid Case with Dot Notation:
+
+```js
+const book = {
+  "book-title": "JS Mastery"
+};
+
+// console.log(book.book-title); ❌ Syntax Error
+```
+
+---
+
+## 🟡 Bracket Notation (`object["property"]`)
+
+### ✅ Syntax:
+
+```js
+object["propertyName"]
+```
+
+### ✅ Use When:
+
+* Property name is **stored in a variable**
+* Property name contains **spaces**, **hyphens**, or starts with a **number**
+* You're **generating property names dynamically**
+
+### ✅ Example:
+
+```js
+const book = {
+  "book-title": "JavaScript Mastery",
+  "author name": "Venkatesh"
+};
+
+console.log(book["book-title"]);     // ✅ JavaScript Mastery
+console.log(book["author name"]);    // ✅ Venkatesh
+
+let key = "book-title";
+console.log(book[key]);              // ✅ JavaScript Mastery
+```
+
+---
+
+## 🔄 Comparison Table
+
+| Feature                    | Dot Notation  | Bracket Notation     |
+| -------------------------- | ------------- | -------------------- |
+| Syntax                     | `obj.prop`    | `obj["prop"]`        |
+| Supports variable as key   | ❌             | ✅                    |
+| Supports keys with spaces  | ❌             | ✅                    |
+| Supports keys with hyphens | ❌             | ✅                    |
+| Best used for              | Static keys   | Dynamic/special keys |
+| Common errors              | Syntax errors | Typos, string errors |
+
+---
+
+## 🧠 Rules of Use
+
+### ✅ Dot Notation Allowed for:
+
+```js
+obj.key
+obj._privateKey
+obj.$price
+obj.camelCase
+```
+
+### ❌ Dot Notation Fails for:
+
+```js
+obj.123name     // starts with number ❌
+obj."first name" // has space ❌
+obj.my-key      // has hyphen ❌
+```
+
+---
+
+## 🧪 Practical Examples
+
+### 1️⃣ Accessing with Static Property
+
+```js
+const car = {
+  brand: "Toyota",
+  model: "Innova"
+};
+
+console.log(car.brand);         // ✅ Toyota
+console.log(car["model"]);      // ✅ Innova
+```
+
+---
+
+### 2️⃣ Accessing with Dynamic Key
+
+```js
+const prop = "brand";
+console.log(car[prop]);         // ✅ Toyota
+
+// ❌ car.prop → undefined (not dynamic)
+```
+
+---
+
+### 3️⃣ Special Characters in Keys
+
+```js
+const product = {
+  "product-name": "Laptop",
+  "price in $": 999
+};
+
+console.log(product["product-name"]);  // ✅ Laptop
+console.log(product["price in $"]);    // ✅ 999
+```
+
+---
+
+### 4️⃣ Adding and Updating Properties
+
+```js
+const obj = {};
+
+// Dot notation
+obj.name = "Venkatesh";
+
+// Bracket notation
+obj["course"] = "MERN Stack";
+
+console.log(obj); // { name: 'Venkatesh', course: 'MERN Stack' }
+```
+
+---
+
+### 5️⃣ Looping Through Properties
+
+```js
+const student = {
+  name: "Venkatesh",
+  dept: "CSE",
+  roll: 101
+};
+
+for (let key in student) {
+  console.log(key, "=>", student[key]);  // Use bracket for dynamic access
+}
+```
+
+---
+
+## 🔁 Mixed Usage Example
+
+```js
+const settings = {
+  theme: "dark",
+  "font-size": 16
+};
+
+let key = "theme";
+console.log(settings.theme);        // ✅ Dot
+console.log(settings[key]);         // ✅ Bracket with variable
+console.log(settings["font-size"]); // ✅ Bracket with special character
+```
+
+---
+
+## ⚠️ Common Mistakes
+
+| Mistake                                 | Fix                                  |
+| --------------------------------------- | ------------------------------------ |
+| `obj.prop` when `prop` is variable      | Use `obj[prop]` instead              |
+| Using dot notation for keys with hyphen | Use `obj["my-key"]` instead          |
+| Forgetting quotes in bracket notation   | Must be `obj["key"]`, not `obj[key]` |
+
+---
+
+## ✅ Summary
+
+* Use **dot notation** for **simple, static keys**.
+* Use **bracket notation** for:
+
+  * **Dynamic keys**
+  * Keys with **spaces**, **hyphens**, or **starting numbers**
+
+---
+
+## 🧑‍💻 Quick Demo Code
+
+```js
+const obj = {
+  name: "Venky",
+  "user-role": "admin"
+};
+
+const key = "name";
+
+console.log(obj.name);          // ✅ dot notation
+console.log(obj[key]);          // ✅ bracket with variable
+console.log(obj["user-role"]); // ✅ bracket with special character
+
+// Modify and add
+obj["new key"] = "value";
+obj.age = 22;
+
+console.log(obj);
+```
+
+---
+

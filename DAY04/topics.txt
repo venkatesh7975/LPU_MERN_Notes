@@ -1,0 +1,11 @@
+closures
+destructuring
+promises
+async/await 
+working with json 
+Process Data with Array Methods 
+Practice: Fetch Data with Promises 
+html -> layout webpages ,structure, semantic tags ,
+
+
+html,css,js ,reactjs,nodejs 

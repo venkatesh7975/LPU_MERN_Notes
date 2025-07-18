@@ -1,0 +1,233 @@
+- Basic operators
+- Math methods
+- Type conversion
+- Edge cases
+- Interview tips
+- Practical examples
+
+---
+
+## 📘 **Math Operations in JavaScript – Complete Notes**
+
+---
+
+## 🔢 1. **Basic Arithmetic Operators**
+
+| Operator | Name           | Example          | Result |
+| -------- | -------------- | ---------------- | ------ |
+| `+`      | Addition       | `5 + 3`          | `8`    |
+| `-`      | Subtraction    | `10 - 4`         | `6`    |
+| `*`      | Multiplication | `6 * 2`          | `12`   |
+| `/`      | Division       | `8 / 2`          | `4`    |
+| `%`      | Modulus        | `10 % 3`         | `1`    |
+| `**`     | Exponentiation | `2 ** 3`         | `8`    |
+| `++`     | Increment      | `let a = 5; a++` | `6`    |
+| `--`     | Decrement      | `let a = 5; a--` | `4`    |
+
+---
+
+## 🧠 2. **Special Operator Notes**
+
+### ➕ **Addition also works with strings**
+
+```js
+"5" + 3; // "53"
+```
+
+### ➖ **Subtraction forces numeric context**
+
+```js
+"5" - 3; // 2
+```
+
+### ➗ **Division by zero**
+
+```js
+5 / 0 - // Infinity
+  5 / 0; // -Infinity
+0 / 0; // NaN
+```
+
+### ❓ **NaN**
+
+`NaN` = Not a Number. Happens in invalid operations.
+
+```js
+"hello" * 5; // NaN
+```
+
+---
+
+## 🧮 3. **Math Object Methods**
+
+JavaScript has a built-in `Math` object for advanced operations.
+
+---
+
+### 🔹 **Rounding Functions**
+
+| Method          | Description     | Example           | Output |
+| --------------- | --------------- | ----------------- | ------ |
+| `Math.round(x)` | Nearest integer | `Math.round(4.5)` | `5`    |
+| `Math.floor(x)` | Round **down**  | `Math.floor(4.9)` | `4`    |
+| `Math.ceil(x)`  | Round **up**    | `Math.ceil(4.1)`  | `5`    |
+| `Math.trunc(x)` | Remove decimals | `Math.trunc(4.9)` | `4`    |
+
+---
+
+### 🔹 **Min, Max, Absolute**
+
+```js
+Math.min(4, 2, 10); // 2
+Math.max(4, 2, 10); // 10
+Math.abs(-9); // 9
+```
+
+---
+
+### 🔹 **Power & Roots**
+
+```js
+Math.pow(2, 3); // 8
+2 ** 3; // 8 (same)
+Math.sqrt(16); // 4
+```
+
+---
+
+### 🔹 **Random Numbers**
+
+```js
+Math.random(); // Between 0 (inclusive) and 1 (exclusive)
+Math.floor(Math.random() * 100); // 0–99 random number
+```
+
+---
+
+### 🔹 **Trigonometry**
+
+```js
+Math.sin(Math.PI / 2); // 1
+Math.cos(0); // 1
+Math.tan(Math.PI / 4); // 1
+```
+
+---
+
+### 🔹 **Logarithmic / Exponential**
+
+```js
+Math.log(10); // Natural log (ln)
+Math.log10(100); // Base-10 log => 2
+Math.exp(1); // e^1 = 2.718...
+```
+
+---
+
+## 🔄 4. **Assignment Operators with Math**
+
+| Operator | Meaning     | Example  |
+| -------- | ----------- | -------- |
+| `+=`     | `a = a + b` | `a += 5` |
+| `-=`     | `a = a - b` | `a -= 3` |
+| `*=`     | `a = a * b` | `a *= 2` |
+| `/=`     | `a = a / b` | `a /= 4` |
+| `%=`     | `a = a % b` | `a %= 2` |
+
+---
+
+## 🔁 5. **Pre/Post Increment/Decrement**
+
+```js
+let x = 5;
+
+let y = x++; // y = 5, x = 6 (post)
+let z = ++x; // x = 7, z = 7 (pre)
+```
+
+---
+
+## 🔢 6. **Number Conversion for Safe Math**
+
+### 🟡 `parseInt`, `parseFloat`
+
+```js
+parseInt("42px"); // 42
+parseFloat("3.14pie"); // 3.14
+```
+
+### 🟡 `Number()`
+
+```js
+Number("42"); // 42
+Number("abc"); // NaN
+```
+
+---
+
+## ⚠️ 7. **Common Edge Cases & Gotchas**
+
+| Expression   | Output                | Why?                     |
+| ------------ | --------------------- | ------------------------ |
+| `0.1 + 0.2`  | `0.30000000000000004` | Floating-point precision |
+| `"5" - 1`    | `4`                   | Coerced to number        |
+| `"5" + 1`    | `"51"`                | String concatenation     |
+| `typeof NaN` | `"number"`            | Quirk of JS              |
+| `Math.max()` | `-Infinity`           | No args passed           |
+
+---
+
+## 🧑‍💻 8. **Practical Math Examples**
+
+### 🔸 Random Dice Roll
+
+```js
+const dice = Math.floor(Math.random() * 6) + 1;
+```
+
+### 🔸 Average of Array
+
+```js
+const avg = (arr) => arr.reduce((a, b) => a + b) / arr.length;
+```
+
+### 🔸 Round to 2 Decimal Places
+
+```js
+Math.round(3.14159 * 100) / 100; // 3.14
+```
+
+---
+
+## ❓ 9. **Interview Question Tips**
+
+| Question                                               | Tip                                                         |
+| ------------------------------------------------------ | ----------------------------------------------------------- |
+| Why does `0.1 + 0.2 !== 0.3`?                          | Floating point issue                                        |
+| How to generate random number in range?                | Use `Math.random() * (max - min) + min`                     |
+| How to check if a value is a number?                   | `typeof x === "number" && !isNaN(x)`                        |
+| What's the difference between `parseInt` and `Number`? | `parseInt` parses until invalid char; `Number` parses whole |
+
+---
+
+## 📌 10. **Tricks for Practice**
+
+- Use `console.log()` and `typeof` to check how operations behave.
+- Use `Math.random()` to build games, OTPs, CAPTCHA, etc.
+- Always handle floating-point precision using `toFixed()` or rounding logic.
+
+---
+
+## 🧮 Summary Chart
+
+| Feature     | Example                         |
+| ----------- | ------------------------------- |
+| Addition    | `5 + 2` → `7`                   |
+| Rounding    | `Math.round(4.6)` → `5`         |
+| Square root | `Math.sqrt(9)` → `3`            |
+| Random 0–99 | `Math.floor(Math.random()*100)` |
+| Power       | `2 ** 3` or `Math.pow(2, 3)`    |
+| Modulus     | `10 % 3` → `1`                  |
+| Absolute    | `Math.abs(-7)` → `7`            |
+
+---

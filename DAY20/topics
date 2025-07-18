@@ -1,0 +1,12 @@
+BLOGGING WEBSITE COMPLETE BACKEND
+ 
+
+PROJECT STRUCTURE AND PROJECT SETUP 
+
+userRoutes,userControllers,
+postRoutes,postControllers,
+commentRoutes,commentControllers,
+
+authRoutes,authControllers,
+middleware 
+backend pagination logic ,crud operations,error handling

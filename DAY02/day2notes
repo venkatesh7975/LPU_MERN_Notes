@@ -1,0 +1,458 @@
+
+
+### 1. **Introduction to Variables**
+
+* A variable is a named storage for data.
+
+```js
+let name = "Venkatesh";
+console.log(name); // Venkatesh
+```
+
+---
+
+### 2. **`var` vs `let` vs `const`**
+
+| Keyword | Scope    | Redeclarable | Reassignable | Hoisted |
+| ------- | -------- | ------------ | ------------ | ------- |
+| `var`   | Function | Yes          | Yes          | Yes     |
+| `let`   | Block    | No           | Yes          | No      |
+| `const` | Block    | No           | No           | No      |
+
+```js
+var a = 10;
+var a = 20; // allowed
+
+let b = 30;
+// let b = 40; // Error: Identifier 'b' has already been declared
+
+const c = 50;
+// c = 60; // Error: Assignment to constant variable
+```
+
+---
+
+### 3. **Data Types in JavaScript**
+
+**Primitive:**
+`string`, `number`, `boolean`, `null`, `undefined`, `symbol`, `bigint`
+
+**Reference:**
+`object`, `array`, `function`
+
+```js
+let str = "Hello";
+let num = 42;
+let bool = true;
+let obj = { name: "Venky" };
+let arr = [1, 2, 3];
+let func = function () { console.log("Hi"); };
+```
+
+---
+
+### 4. **Type Conversion (Implicit vs Explicit)**
+
+**Implicit (Type Coercion):**
+
+```js
+console.log("5" + 1); // "51" (number + string => string)
+console.log("5" - 1); // 4   (string - number => number)
+```
+
+**Explicit:**
+
+```js
+let num = "123";
+let converted = Number(num);
+console.log(typeof converted); // number
+
+let n = 10;
+console.log(String(n)); // "10"
+```
+
+---
+
+### 5. **Operators in JavaScript**
+
+* **Arithmetic**: `+`, `-`, `*`, `/`, `%`, `**`
+
+```js
+console.log(2 ** 3); // 8
+```
+
+* **Assignment**: `=`, `+=`, `-=`
+
+```js
+let a = 5;
+a += 3; // 8
+```
+
+* **Comparison**: `==`, `===`, `!=`, `!==`, `<`, `>`
+
+```js
+console.log(5 == "5");  // true
+console.log(5 === "5"); // false
+```
+
+* **Logical**: `&&`, `||`, `!`
+
+```js
+console.log(true && false); // false
+```
+
+* **Unary**: `typeof`, `++`, `--`, `!`
+
+```js
+console.log(typeof 123); // number
+```
+
+* **Ternary**: `condition ? expr1 : expr2`
+
+```js
+let age = 18;
+let access = (age >= 18) ? "Granted" : "Denied";
+console.log(access);
+```
+
+---
+
+### 6. **Conditional Statements and Nested Conditions**
+
+```js
+let score = 85;
+
+if (score >= 90) {
+  console.log("A");
+} else if (score >= 80) {
+  console.log("B");
+} else {
+  console.log("C");
+}
+```
+
+---
+
+### 7. **Loops and Nested Loops (for loop)**
+
+```js
+for (let i = 1; i <= 3; i++) {
+  console.log("i =", i);
+}
+```
+
+**Nested Loop Example:**
+
+```js
+for (let i = 1; i <= 2; i++) {
+  for (let j = 1; j <= 3; j++) {
+    console.log(`i=${i}, j=${j}`);
+  }
+}
+```
+
+---
+
+### 8. **`while` Loop**
+
+```js
+let i = 1;
+while (i <= 3) {
+  console.log(i);
+  i++;
+}
+```
+
+---
+
+### 9. **`do...while` Loop**
+
+```js
+let i = 1;
+do {
+  console.log(i);
+  i++;
+} while (i <= 3);
+```
+
+---
+
+### 10. **Functions in JavaScript**
+
+```js
+// Function Declaration
+function greet(name) {
+  console.log("Hello " + name);
+}
+greet("Venkatesh");
+
+// Function Expression
+const sayHi = function() {
+  console.log("Hi");
+};
+
+// Arrow Function
+const add = (a, b) => a + b;
+```
+
+---
+
+### 11. **Arguments vs Parameters**
+
+```js
+function add(x, y) { // x, y are parameters
+  return x + y;
+}
+console.log(add(5, 3)); // 5, 3 are arguments
+```
+
+---
+
+### 12. **Default Parameters**
+
+```js
+function greet(name = "Guest") {
+  console.log("Hello " + name);
+}
+greet(); // Hello Guest
+```
+
+---
+
+### 13. **Timers in JavaScript**
+
+```js
+// setTimeout
+setTimeout(() => {
+  console.log("Runs after 2 seconds");
+}, 2000);
+
+// setInterval
+let count = 0;
+let intervalId = setInterval(() => {
+  console.log("Interval", ++count);
+  if (count === 3) clearInterval(intervalId);
+}, 1000);
+```
+
+---
+
+### 14. **String Repetition vs Concatenation**
+
+```js
+let name = "Venky";
+
+// Concatenation
+let greet = "Hi " + name + "!";
+console.log(greet);
+
+// Repetition
+console.log("Hi! ".repeat(3)); // Hi! Hi! Hi!
+```
+
+---
+
+### 15. **Practice Problems**
+
+✅ FizzBuzz:
+
+```js
+for (let i = 1; i <= 20; i++) {
+  if (i % 3 === 0 && i % 5 === 0) console.log("FizzBuzz");
+  else if (i % 3 === 0) console.log("Fizz");
+  else if (i % 5 === 0) console.log("Buzz");
+  else console.log(i);
+}
+```
+
+✅ Multiplication Table:
+
+```js
+let n = 5;
+for (let i = 1; i <= 10; i++) {
+  console.log(`${n} * ${i} = ${n * i}`);
+}
+```
+
+✅ Even/Odd Checker:
+
+```js
+let num = 7;
+console.log(num % 2 === 0 ? "Even" : "Odd");
+```
+
+---
+
+### 16. **Writing Optimized Solutions**
+
+**Example: Finding even numbers using filter (optimized for readability and performance):**
+
+```js
+let numbers = [1, 2, 3, 4, 5, 6];
+let evens = numbers.filter(num => num % 2 === 0);
+console.log(evens); // [2, 4, 6]
+```
+
+* Use efficient loops
+* Avoid nested loops when possible
+* Use built-in array methods (`map`, `filter`, `reduce`)
+
+
+
+## 🔢 **Mathematical Operations Between Different Data Types in JavaScript**
+
+JavaScript is **loosely typed** and performs **type coercion**, which means it tries to convert values to compatible types automatically when doing operations.
+
+---
+
+### ✅ 1. **Number + Number**
+
+```js
+console.log(5 + 3); // 8
+```
+
+---
+
+### ✅ 2. **Number + String → String (Concatenation)**
+
+```js
+console.log(5 + "3"); // "53"  → number gets converted to string
+console.log("The result is: " + 10); // "The result is: 10"
+```
+
+---
+
+### ✅ 3. **String - Number → Number (if the string is numeric)**
+
+```js
+console.log("10" - 2); // 8
+console.log("20" - "5"); // 15
+```
+
+🔴 If the string is non-numeric:
+
+```js
+console.log("hello" - 5); // NaN
+```
+
+---
+
+### ✅ 4. **String \* Number / Number → Number**
+
+```js
+console.log("5" * 2); // 10
+console.log("10" / "2"); // 5
+```
+
+---
+
+### ✅ 5. **Boolean + Number → Number**
+
+```js
+console.log(true + 1); // 2 (true → 1)
+console.log(false + 1); // 1 (false → 0)
+```
+
+---
+
+### ✅ 6. **Boolean + Boolean → Number**
+
+```js
+console.log(true + true); // 2
+console.log(false + false); // 0
+```
+
+---
+
+### ✅ 7. **null in Mathematical Operations**
+
+* `null` is treated as `0` in arithmetic.
+
+```js
+console.log(null + 1); // 1
+console.log(null * 5); // 0
+```
+
+---
+
+### ✅ 8. **undefined in Mathematical Operations**
+
+* `undefined` is **not** converted to a number, results in **NaN**.
+
+```js
+console.log(undefined + 1); // NaN
+console.log(undefined - 1); // NaN
+```
+
+---
+
+### ✅ 9. **NaN in Mathematical Operations**
+
+* Any arithmetic with `NaN` always results in `NaN`.
+
+```js
+console.log(NaN + 5); // NaN
+console.log(NaN * 2); // NaN
+```
+
+---
+
+### ✅ 10. **BigInt with Numbers → ❌ Error**
+
+* You **cannot** mix `BigInt` with `Number` directly.
+
+```js
+const big = 10n;
+console.log(big + 5n); // 15n ✅
+console.log(big + 5);  // ❌ TypeError
+```
+
+---
+
+### ✅ 11. **Symbol in Arithmetic → ❌ Error**
+
+```js
+let sym = Symbol("id");
+// console.log(sym + 2); // ❌ TypeError: Cannot convert a Symbol value to a number
+```
+
+---
+
+### ✅ 12. **Array in Arithmetic**
+
+* Arrays are converted to strings or numbers (based on context).
+
+```js
+console.log([1] + 1); // "11" → [1] becomes "1", then string concatenation
+console.log([2] * 3); // 6 → [2] becomes 2
+console.log([1,2] * 3); // NaN → "1,2" is not a number
+```
+
+---
+
+### ✅ 13. **Object in Arithmetic**
+
+* Objects get converted using `.valueOf()` or `.toString()`, usually results in `NaN`
+
+```js
+console.log({} + 1); // "[object Object]1" → object becomes string
+console.log({} - 1); // NaN
+```
+
+---
+
+### 🧠 Summary Table
+
+| Operation          | Behavior                                | Example           | Result                        |
+| ------------------ | --------------------------------------- | ----------------- | ----------------------------- |
+| Number + Number    | Normal addition                         | `5 + 3`           | `8`                           |
+| Number + String    | String concatenation                    | `5 + "3"`         | `"53"`                        |
+| String - Number    | String converted to number if possible  | `"10" - 2`        | `8`                           |
+| Boolean + Number   | Boolean to number (true = 1, false = 0) | `true + 1`        | `2`                           |
+| null + Number      | null is 0                               | `null + 1`        | `1`                           |
+| undefined + Number | undefined is NaN                        | `undefined + 1`   | `NaN`                         |
+| BigInt + Number    | ❌ Error: can't mix                      | `10n + 5`         | ❌ TypeError                   |
+| Symbol + Number    | ❌ Error: can't convert                  | `Symbol("x") + 1` | ❌ TypeError                   |
+| Array + Number     | Array → string or number                | `[1] + 1`         | `"11"`                        |
+| Object + Number    | Object → NaN or string                  | `{} + 1`          | `"[object Object]1"` or `NaN` |
+

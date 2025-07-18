@@ -1,0 +1,52 @@
+// Sample filteredProducts array (simplified for explanation)
+const filteredProducts = [
+  { id: 1, title: "Banana", price: 1.5 },
+  { id: 2, title: "Apple", price: 2.0 },
+  { id: 3, title: "Orange", price: 1.0 },
+  { id: 4, title: "Mango", price: 3.0 },
+  { id: 5, title: "Pineapple", price: 2.5 },
+  { id: 6, title: "Grapes", price: 1.8 },
+  { id: 7, title: "Watermelon", price: 4.0 },
+  { id: 8, title: "Strawberry", price: 3.5 },
+  { id: 9, title: "Kiwi", price: 2.2 },
+  { id: 10, title: "Blueberry", price: 2.8 },
+];
+
+// sortType is a string that controls sorting behavior, e.g., "price-low-high"
+const sortType = "price-low-high";
+
+// sortedProducts is the filteredProducts array sorted according to sortType
+const sortedProducts = filteredProducts.sort((a, b) => {
+  // If sorting by price ascending (low to high)
+  if (sortType === "price-low-high") {
+    // Subtract prices:
+    // if a.price < b.price → negative → a comes before b
+    // if a.price > b.price → positive → a comes after b
+    // if equal → 0 → order unchanged
+    return a.price - b.price;
+  }
+
+  // If sorting by price descending (high to low)
+  if (sortType === "price-high-low") {
+    // Reverse subtraction to invert order
+    return b.price - a.price;
+  }
+
+  // If sorting by title alphabetically A to Z
+  if (sortType === "title-a-z") {
+    // localeCompare returns:
+    // negative if a.title < b.title alphabetically
+    // positive if a.title > b.title alphabetically
+    // 0 if equal
+    return a.title.localeCompare(b.title);
+  }
+
+  // If sorting by title alphabetically Z to A
+  if (sortType === "title-z-a") {
+    // Reverse the comparison order
+    return b.title.localeCompare(a.title);
+  }
+
+  // If no sortType matches, keep original order
+  return 0;
+});

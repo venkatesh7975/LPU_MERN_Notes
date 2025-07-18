@@ -1,0 +1,12 @@
+| Type      | Example         | typeof result |
+| --------- | --------------- | ------------- |
+| String    | `"Hello"`       | `"string"`    |
+| Number    | `123`, `3.14`   | `"number"`    |
+| Boolean   | `true`, `false` | `"boolean"`   |
+| undefined | `let x;`        | `"undefined"` |
+| null      | `let x = null`  | `"object"`    |
+| BigInt    | `123n`          | `"bigint"`    |
+| Symbol    | `Symbol("id")`  | `"symbol"`    |
+| Object    | `{}`            | `"object"`    |
+| Array     | `[]`            | `"object"`    |
+| Function  | `function() {}` | `"function"`  |

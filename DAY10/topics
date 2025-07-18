@@ -1,0 +1,12 @@
+server
+http request and http response 
+api 
+cors package 
+
+dotenv 
+mongodb 
+connecting mongodb to server 
+creating server 
+exception handling 
+try catch
+sending response from server

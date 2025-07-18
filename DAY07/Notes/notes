@@ -1,0 +1,379 @@
+## 🔷 1. **ReactJS Overview**
+
+**React.js** is a JavaScript library for building **user interfaces**, especially **single-page applications**.
+It uses a **component-based architecture**, allowing reusable, maintainable code.
+
+### 🔑 Key Features:
+
+- Declarative UI
+- Component-based
+- Virtual DOM
+- Fast rendering
+- JSX (JavaScript + HTML syntax)
+
+---
+
+## 🔷 2. **JSX (JavaScript XML)**
+
+JSX allows writing HTML inside JavaScript.
+
+```jsx
+const element = <h1>Hello, Venkatesh!</h1>;
+```
+
+JSX gets compiled to:
+
+```js
+React.createElement("h1", null, "Hello, Venkatesh!");
+```
+
+---
+
+## 🔷 3. **useState Hook**
+
+`useState` is a React Hook that lets you create **state variables** in a functional component.
+
+### 🔹 Syntax:
+
+```jsx
+const [stateVariable, setStateVariable] = useState(initialValue);
+```
+
+### 🔹 Example:
+
+```jsx
+import React, { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>Count is: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+
+---
+
+## 🔷 4. **Event Handling**
+
+React uses camelCase for event names like `onClick`, `onChange`, etc.
+
+---
+
+### ✅ `onClick` Event
+
+Handles a click on a button or element.
+
+```jsx
+function App() {
+  const handleClick = () => {
+    alert("Button clicked!");
+  };
+
+  return <button onClick={handleClick}>Click Me</button>;
+}
+```
+
+---
+
+### ✅ `onChange` Event
+
+Handles changes in input fields (textboxes, selects, etc.).
+
+```jsx
+function App() {
+  const [text, setText] = useState("");
+
+  const handleChange = (e) => {
+    setText(e.target.value);
+  };
+
+  return <input type="text" value={text} onChange={handleChange} />;
+}
+```
+
+---
+
+## 🔷 5. **State in React**
+
+**State** is a built-in object that stores data that changes over time. When the state changes, the component re-renders.
+
+### 🔑 Key Points:
+
+- Managed using `useState` in functional components.
+- Never mutate state directly (`stateVar = value` ❌)
+- Use the `setState` function
+
+---
+
+## 🔷 6. **Props (Properties)**
+
+**Props** are how data is passed from a **parent** component to a **child** component.
+
+### 🔹 Example:
+
+```jsx
+function Greeting(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+function App() {
+  return <Greeting name="Venkatesh" />;
+}
+```
+
+Here, `"Venkatesh"` is passed as a prop to the `Greeting` component.
+
+---
+
+## 🔷 7. **Parent vs Child Components**
+
+### ✅ Parent Component
+
+- Owns and manages state
+- Sends data to child using `props`
+
+### ✅ Child Component
+
+- Receives data from parent using `props`
+- Can send data back via functions passed as props
+
+### 🔹 Example:
+
+```jsx
+// Child.js
+function Child({ message, onReply }) {
+  return (
+    <div>
+      <p>{message}</p>
+      <button onClick={() => onReply("Thanks, Parent!")}>Reply</button>
+    </div>
+  );
+}
+
+// App.js
+import Child from "./Child";
+
+function App() {
+  const handleReply = (msg) => {
+    console.log("Child says:", msg);
+  };
+
+  return <Child message="Hello from parent!" onReply={handleReply} />;
+}
+```
+
+---
+
+## 🔷 8. **Component Communication**
+
+| Communication Type   | How?                   |
+| -------------------- | ---------------------- |
+| Parent → Child       | via `props`            |
+| Child → Parent       | via callback functions |
+| Sibling ↔ Sibling    | Lift state to parent   |
+| Global State Sharing | Context API / Redux    |
+
+---
+
+## ✅ Summary Table
+
+| Concept        | Purpose                             |
+| -------------- | ----------------------------------- |
+| `useState`     | Create local state                  |
+| `onClick`      | Handle click events                 |
+| `onChange`     | Handle input field updates          |
+| `props`        | Pass data from parent to child      |
+| Parent ↔ Child | Communicate using props + callbacks |
+| JSX            | Write HTML-like syntax in JS        |
+| State          | Store component data that changes   |
+
+---
+
+Certainly! Here’s a detailed note on **React state management with `useState`**, **props (data passing)**, and **event handling (`onClick`, `onChange`)**, including a practical **counter example** demonstrating conditional rendering and style changes.
+
+---
+
+# React State, Props & Events — Detailed Notes with Examples
+
+---
+
+## 1. React State — `useState` Hook
+
+- React’s way to create **state variables** inside functional components.
+- State is data that can change over time and causes UI to update (re-render) when changed.
+
+### Syntax:
+
+```js
+const [stateVariable, setStateFunction] = useState(initialValue);
+```
+
+- `stateVariable`: Current state value.
+- `setStateFunction`: Function to update the state.
+- `initialValue`: Initial state.
+
+### Example — Basic Counter
+
+```jsx
+import React, { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0); // Initial count = 0
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+
+- Clicking the button updates the count state and re-renders UI.
+
+---
+
+## 2. Passing Data with Props
+
+- Props = properties passed from a **parent component** to a **child component**.
+- They are **read-only** inside the child.
+- Used for component reusability and dynamic rendering.
+
+### Example — Parent passing to Child
+
+```jsx
+function Parent() {
+  const message = "Hello from parent";
+
+  return <Child text={message} />;
+}
+
+function Child(props) {
+  return <p>{props.text}</p>;
+}
+```
+
+Or using **destructuring**:
+
+```jsx
+function Child({ text }) {
+  return <p>{text}</p>;
+}
+```
+
+---
+
+## 3. Handling Events in React
+
+- React wraps native DOM events with synthetic events.
+- Use camelCase event names, e.g., `onClick`, `onChange`.
+- Pass a **function** as event handler.
+
+---
+
+### 3.1 `onClick`
+
+- Triggered when user clicks an element.
+
+```jsx
+<button onClick={() => alert("Clicked!")}>Click Me</button>
+```
+
+---
+
+### 3.2 `onChange`
+
+- Used on form elements to detect value changes (text input, select, checkbox).
+
+Example:
+
+```jsx
+function InputExample() {
+  const [value, setValue] = useState("");
+
+  return (
+    <input
+      type="text"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      placeholder="Type something"
+    />
+  );
+}
+```
+
+---
+
+## 4. Counter with Conditional Rendering & Style Change
+
+### Requirements:
+
+- Display count.
+- Buttons to increment and decrement.
+- If count > 10, show warning message.
+- Change text color based on count (green if positive, red if zero or negative).
+
+---
+
+### Complete Example:
+
+```jsx
+import React, { useState } from "react";
+
+function AdvancedCounter() {
+  const [count, setCount] = useState(0);
+
+  // Determine color style based on count
+  const countStyle = {
+    color: count > 0 ? "green" : "red",
+    fontWeight: "bold",
+    fontSize: "24px",
+  };
+
+  return (
+    <div style={{ textAlign: "center", marginTop: "20px" }}>
+      <p style={countStyle}>Count: {count}</p>
+
+      <button
+        onClick={() => setCount(count + 1)}
+        style={{ marginRight: "10px", padding: "10px" }}
+      >
+        Increment
+      </button>
+
+      <button onClick={() => setCount(count - 1)} style={{ padding: "10px" }}>
+        Decrement
+      </button>
+
+      {/* Conditional rendering */}
+      {count > 10 && (
+        <p style={{ color: "orange", marginTop: "10px" }}>
+          Warning: Count is above 10!
+        </p>
+      )}
+    </div>
+  );
+}
+
+export default AdvancedCounter;
+```
+
+---
+
+## 5. Summary Table
+
+| Concept          | Purpose & Usage                                 | Example                                              |
+| ---------------- | ----------------------------------------------- | ---------------------------------------------------- |
+| `useState`       | Manage component state in functional components | `const [count, setCount] = useState(0);`             |
+| Props            | Pass data from parent to child components       | `<Child text={message} />`                           |
+| `onClick` event  | Handle button or element click events           | `<button onClick={handleClick}>`                     |
+| `onChange` event | Detect input value changes                      | `<input onChange={e => setValue(e.target.value)} />` |
+| Conditional UI   | Render UI based on state conditions             | `{count > 10 && <p>Warning</p>}`                     |
+| Inline Styling   | Change element styles dynamically               | `style={{ color: count > 0 ? "green" : "red" }}`     |
+
+---

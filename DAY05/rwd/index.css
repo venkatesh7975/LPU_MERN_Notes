@@ -1,0 +1,29 @@
+@media (max-width: 480px) {
+  #stove {
+    display: none;
+  }
+  #mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 908px) {
+  #printer {
+    display: none;
+  }
+
+  #mobile {
+    display: none;
+  }
+}
+
+
+@media (min-width: 909px)  {
+  #stove {
+    display: none;
+  }
+  #printer {
+    display: none;
+  }
+    
+}

@@ -1,0 +1,6 @@
+backend 
+server  (express ,)
+api 
+http request vs http response 
+
+cors 

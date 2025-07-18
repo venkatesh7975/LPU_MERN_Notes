@@ -1,0 +1,332 @@
+## ✅ Top 50 Easy JavaScript Object Interview Questions
+
+---
+
+### 🔹 Basics
+
+1. **What is an object in JavaScript?**
+   👉 A collection of key-value pairs.
+
+```js
+const person = { name: "Venkatesh", age: 25 };
+```
+
+2. **How to create an object?**
+   👉 Using object literal syntax:
+
+```js
+const car = { brand: "Toyota", year: 2023 };
+```
+
+3. **How to access object properties?**
+   👉 Dot: `obj.name`, Bracket: `obj["name"]`
+
+4. **How to add a new property to an object?**
+
+```js
+obj.city = "Delhi";
+obj["country"] = "India";
+```
+
+5. **How to update a property value?**
+
+```js
+obj.age = 30;
+```
+
+6. **How to delete a property?**
+
+```js
+delete obj.age;
+```
+
+7. **How to check if a key exists in an object?**
+
+```js
+"name" in obj;
+obj.hasOwnProperty("name");
+```
+
+8. **How to get all keys of an object?**
+
+```js
+Object.keys(obj);
+```
+
+9. **How to get all values of an object?**
+
+```js
+Object.values(obj);
+```
+
+10. **How to get all key-value pairs of an object?**
+
+```js
+Object.entries(obj);
+```
+
+---
+
+### 🔹 Dot vs Bracket Notation
+
+11. **What is dot notation?**
+    👉 `obj.name` — for valid key names
+
+12. **What is bracket notation?**
+    👉 `obj["first-name"]` — for dynamic or invalid key names
+
+13. **When to use bracket notation?**
+    👉 When key has special chars or stored in variable
+
+---
+
+### 🔹 Object Methods
+
+14. **How to define a method inside an object?**
+
+```js
+const user = {
+  sayHi: function () {
+    return "Hello!";
+  },
+};
+```
+
+15. **What is `this` in object method?**
+    👉 Refers to the object itself.
+
+16. **Example of using `this`:**
+
+```js
+const person = {
+  name: "Venky",
+  greet() {
+    console.log("Hi " + this.name);
+  },
+};
+```
+
+---
+
+### 🔹 Looping and Iteration
+
+17. **How to loop over an object?**
+
+```js
+for (let key in obj) {
+  console.log(key, obj[key]);
+}
+```
+
+18. **How to loop only own properties?**
+
+```js
+if (obj.hasOwnProperty(key)) { ... }
+```
+
+---
+
+### 🔹 Cloning and Merging
+
+19. **How to clone an object? (shallow)**
+
+```js
+const clone = { ...obj };
+// or
+Object.assign({}, obj);
+```
+
+20. **How to merge two objects?**
+
+```js
+const merged = { ...obj1, ...obj2 };
+```
+
+21. **Difference between shallow and deep copy?**
+    👉 Shallow copy copies references of nested objects.
+
+22. **How to deep clone an object?**
+
+```js
+const deepCopy = JSON.parse(JSON.stringify(obj));
+```
+
+---
+
+### 🔹 Object Utility Methods
+
+23. **What does `Object.freeze()` do?**
+    👉 Makes the object immutable (no change allowed).
+
+24. **What does `Object.seal()` do?**
+    👉 Prevents adding/removing properties, allows updates.
+
+25. **Check if object is frozen or sealed?**
+
+```js
+Object.isFrozen(obj);
+Object.isSealed(obj);
+```
+
+---
+
+### 🔹 Destructuring
+
+26. **What is object destructuring?**
+    👉 Extract values directly:
+
+```js
+const { name, age } = person;
+```
+
+27. **Destructure with new variable name:**
+
+```js
+const { name: userName } = person;
+```
+
+28. **Destructuring with default values:**
+
+```js
+const { age = 18 } = person;
+```
+
+---
+
+### 🔹 JSON Conversion
+
+29. **Convert object to JSON string?**
+
+```js
+JSON.stringify(obj);
+```
+
+30. **Convert JSON string to object?**
+
+```js
+JSON.parse(jsonString);
+```
+
+---
+
+### 🔹 Other Useful Concepts
+
+31. **What is `typeof` an object?**
+    👉 `"object"`
+
+32. **How to check if a value is an object (not null)?**
+
+```js
+value !== null && typeof value === "object";
+```
+
+33. **How to prevent property modification?**
+    👉 Use `Object.defineProperty()`
+
+34. **How to make property read-only?**
+
+```js
+Object.defineProperty(obj, "id", {
+  value: 1,
+  writable: false,
+});
+```
+
+---
+
+### 🔹 Symbols and Computed Keys
+
+35. **Computed property key:**
+
+```js
+const key = "email";
+const user = { [key]: "abc@gmail.com" };
+```
+
+36. **Symbol key in object:**
+
+```js
+const id = Symbol("id");
+const user = { [id]: 101 };
+```
+
+---
+
+### 🔹 Prototypes (Easy Level)
+
+37. **What is prototype?**
+    👉 The object from which other objects inherit.
+
+38. **How to get prototype of an object?**
+
+```js
+Object.getPrototypeOf(obj);
+```
+
+39. **Set prototype of an object:**
+
+```js
+Object.setPrototypeOf(obj, proto);
+```
+
+40. **What is `__proto__`?**
+    👉 Internal reference to prototype chain.
+
+---
+
+### 🔹 Miscellaneous
+
+41. **Check if object is empty?**
+
+```js
+Object.keys(obj).length === 0;
+```
+
+42. **What does `Object.create()` do?**
+    👉 Creates new object with specified prototype.
+
+43. **How to convert object to array?**
+
+```js
+Object.entries(obj); // returns [key, value] pairs
+```
+
+44. **What happens if you stringify a function inside object?**
+    👉 `JSON.stringify()` ignores functions and `undefined`.
+
+45. **Difference between `null` and `{}`?**
+    👉 `null` is primitive, `{}` is empty object.
+
+---
+
+### 🔹 Real-World
+
+46. **How to store user info in an object?**
+
+```js
+const user = {
+  name: "Venky",
+  email: "venky@gmail.com",
+  role: "admin",
+};
+```
+
+47. **Use case of dynamic key access?**
+    👉 Search filters, user forms, config maps
+
+48. **Create object without prototype?**
+
+```js
+const obj = Object.create(null);
+```
+
+49. **Check if object is extensible?**
+
+```js
+Object.isExtensible(obj);
+```
+
+50. **Why prefer object literals over constructor?**
+    👉 Shorter syntax, easier to read, faster to write.
+
+---

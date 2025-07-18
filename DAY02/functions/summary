@@ -1,0 +1,11 @@
+| Function Type         | Syntax Example                  |
+| --------------------- | ------------------------------- |
+| Function Declaration  | `function greet() {}`           |
+| Function Expression   | `const x = function() {}`       |
+| Arrow Function        | `const x = () => {}`            |
+| Callback              | `doSomething(() => {})`         |
+| IIFE                  | `(function() {})()`             |
+| Recursive Function    | `function loop() { loop(); }`   |
+| Default Parameter     | `function(x = 10) {}`           |
+| Rest Parameter        | `function(...args) {}`          |
+| Higher Order Function | `function f(g) { return g(); }` |

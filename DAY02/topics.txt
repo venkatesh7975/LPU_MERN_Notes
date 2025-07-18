@@ -1,0 +1,17 @@
+1. Introduction to Variables
+2. `var` vs `let` vs `const`
+3. Data Types in JavaScript
+4. Type Conversion (Implicit vs Explicit)
+5. Operators in JavaScript
+6. Conditional Statements and Nested Conditions
+7. Loops and Nested Loops (for loop)
+8. `while` Loop
+9. `do...while` Loop
+10. Functions in JavaScript
+11. Arguments vs Parameters
+12. Default Parameters
+13. Timers in JavaScript (`setTimeout`, `setInterval`)
+14. String Repetition vs String Concatenation
+15. Practice Problems
+16. Writing Optimized Solutions
+

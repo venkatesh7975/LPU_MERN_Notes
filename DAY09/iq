@@ -1,0 +1,270 @@
+Absolutely! Here are some **important and easy interview questions** on the topics of **data fetching, filtering, sorting, routing, dynamic routing, useEffect, and Tailwind CSS**, along with detailed explanations:
+
+---
+
+# Important & Easy Questions with Explanations
+
+---
+
+### 1. **What is the purpose of `useEffect` in React?**
+
+**Answer:**
+`useEffect` is a React hook that lets you perform side effects in functional components. Common use cases include fetching data from an API, subscribing to events, or manually manipulating the DOM.
+
+- It runs **after the component renders**.
+- The second argument is a dependency array that controls when the effect runs.
+
+  - Empty array `[]` means run once on mount.
+  - Dependencies inside array cause the effect to run again when they change.
+
+**Example:**
+
+```js
+useEffect(() => {
+  fetchData();
+}, []);
+```
+
+This fetches data once when the component mounts.
+
+---
+
+### 2. **How do you fetch data from a server and display it in React?**
+
+**Answer:**
+Use `fetch` or libraries like `axios` inside `useEffect` to make an HTTP GET request. Store the data in a state variable via `useState` and render it inside JSX.
+
+**Example:**
+
+```js
+const [data, setData] = useState([]);
+
+useEffect(() => {
+  fetch("http://localhost:3000/products")
+    .then((res) => res.json())
+    .then(setData)
+    .catch(console.error);
+}, []);
+```
+
+Then map over `data` to display items.
+
+---
+
+### 3. **What is filtering and sorting of data in React? How is it implemented?**
+
+**Answer:**
+
+- **Filtering** is showing only items that meet a condition (e.g., category = "men's clothing").
+- **Sorting** is arranging items by some attribute (e.g., price ascending).
+
+Use JavaScript array methods:
+
+```js
+const filtered = products.filter((p) => p.category === selectedCategory);
+
+const sorted = filtered.sort((a, b) => a.price - b.price);
+```
+
+React state (`useState`) is used to store filter and sort options, and the UI updates accordingly.
+
+---
+
+### 4. **What is React Router and why do we use it?**
+
+**Answer:**
+React Router is a library that enables navigation between components in a React app without refreshing the page. It handles URL changes and renders different components based on the current URL.
+
+This provides a **single-page application (SPA)** experience.
+
+---
+
+### 5. **What is dynamic routing in React Router?**
+
+**Answer:**
+Dynamic routing means defining routes with variables in the path, such as `/products/:id`. The `:id` part is dynamic and changes based on the item clicked.
+
+You access the dynamic part using `useParams()`:
+
+```js
+import { useParams } from "react-router-dom";
+const { id } = useParams();
+```
+
+This allows you to fetch or display data based on the URL parameter.
+
+---
+
+### 6. **How do you implement a "Product Details" page with dynamic routing?**
+
+**Answer:**
+
+- Define a route with a dynamic segment:
+
+```jsx
+<Route path="/products/:id" element={<ProductDetails />} />
+```
+
+- Use `useParams` in `ProductDetails` to get the `id`.
+- Use `useEffect` to fetch product data by `id`.
+- Render the product details in the component.
+
+---
+
+### 7. **What is Tailwind CSS?**
+
+**Answer:**
+Tailwind CSS is a utility-first CSS framework that provides low-level classes (like `p-4`, `text-center`, `bg-blue-500`) to build custom designs directly in your markup, without writing custom CSS.
+
+---
+
+### 8. **How does Tailwind CSS help with responsive design?**
+
+**Answer:**
+Tailwind includes responsive prefixes such as `md:`, `lg:`, `xl:` to apply styles only on certain screen sizes.
+
+Example:
+
+```html
+<div class="text-center md:text-left"></div>
+```
+
+Here, text will be centered on small screens but left-aligned on medium screens and larger.
+
+---
+
+### 9. **What is the purpose of the `useState` hook?**
+
+**Answer:**
+`useState` allows you to add state variables to functional components.
+
+Example:
+
+```js
+const [count, setCount] = useState(0);
+```
+
+You can update state with `setCount`, triggering component re-render.
+
+---
+
+### 10. **How do you handle loading and error states when fetching data?**
+
+**Answer:**
+Use additional state variables:
+
+```js
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState(null);
+
+useEffect(() => {
+  fetch(...)
+    .then(...)
+    .catch(err => setError(err))
+    .finally(() => setLoading(false));
+}, []);
+```
+
+Render loading UI when `loading` is true, show error message if `error` exists, otherwise show data.
+
+---
+
+### 11. **How do you navigate programmatically in React Router?**
+
+**Answer:**
+Use the `useNavigate` hook:
+
+```js
+import { useNavigate } from "react-router-dom";
+
+const navigate = useNavigate();
+
+function goToHome() {
+  navigate("/");
+}
+```
+
+Useful after form submissions or actions.
+
+---
+
+### 12. **How do you create a reusable component styled with Tailwind CSS?**
+
+**Answer:**
+Use Tailwind utility classes inside your component's JSX:
+
+```jsx
+function Button({ children }) {
+  return (
+    <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      {children}
+    </button>
+  );
+}
+```
+
+You can pass props for more flexibility.
+
+---
+
+### 13. **What is the significance of the dependency array in `useEffect`?**
+
+**Answer:**
+It controls when the effect runs.
+
+- `[]`: runs once on mount.
+- `[dep1, dep2]`: runs on mount and whenever `dep1` or `dep2` changes.
+- No array: runs after every render (usually unwanted).
+
+---
+
+### 14. **How to pass data via React Router `Link`?**
+
+**Answer:**
+You can pass data as URL parameters or via React Router's `state`:
+
+```jsx
+<Link to="/products/1" state={{ fromDashboard: true }}>
+  Product 1
+</Link>
+```
+
+In the target component:
+
+```js
+import { useLocation } from "react-router-dom";
+const location = useLocation();
+console.log(location.state.fromDashboard); // true
+```
+
+---
+
+### 15. **How to handle 404 Not Found page in React Router?**
+
+**Answer:**
+Add a catch-all route at the end:
+
+```jsx
+<Route path="*" element={<NotFound />} />
+```
+
+This will match any undefined route.
+
+---
+
+# Summary Table
+
+| Question                         | Key Idea                                           |
+| -------------------------------- | -------------------------------------------------- |
+| What is `useEffect`?             | Hook for side effects like data fetching           |
+| How to fetch and display data?   | Use `fetch` in `useEffect` and store in `useState` |
+| Filtering & sorting?             | Use `.filter()` and `.sort()` on arrays            |
+| What is React Router?            | Client-side routing for SPA navigation             |
+| Dynamic routing?                 | URL params with `:id`, access via `useParams`      |
+| Tailwind CSS?                    | Utility-first CSS framework                        |
+| Handling loading & error states? | Use separate `loading` and `error` state variables |
+| Programmatic navigation?         | Use `useNavigate` hook                             |
+| Dependency array in `useEffect`? | Controls when effect runs                          |
+| 404 page in React Router?        | Use wildcard route (`path="*"`)                    |
+
+---

@@ -1,0 +1,15 @@
+1)HOw to backend setup project(install nodejs,npm init -y,install required packages)
+2)How organise project files ,
+3)how to create server (express,instance ,app.listen(port,cbf) )
+4)how to connect dabase to server (mongoose.connect(url))
+5)schema design and model (new mongoose.schema, mongoose.model)
+6)api  (router.method(path,function))  (CRUD OPERATIONS)
+    -->how to read data from client (req.body,req.params,req.query,req.headers)
+    --->how to deal with db using queries(find(),.save(),findbyidandupdda(),          findbyiddeletet())
+    -->how to handle errors (try catch)
+    --->how to perform condition on data
+    --->how to send response
+7)nodemailer,bcrypt,jwt,cors,dotenv,(express.json()),middleware,authentication,authorization
+8)middlewares
+9)how to test apis
+
