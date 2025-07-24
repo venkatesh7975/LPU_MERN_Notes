@@ -47,6 +47,7 @@
 | UI Kit       | **ShadCN UI + TailwindCSS**                   | [https://ui.shadcn.com](https://ui.shadcn.com)                                                         |
 | Real Project | **Build and Deploy React App with Vite**      | [https://www.youtube.com/watch?v=0fYi8SGA20k](https://www.youtube.com/watch?v=0fYi8SGA20k)             |
 | Hands-On     | **React Projects GitHub**                     | [https://github.com/kurdianskyy/awesome-react](https://github.com/kurdianskyy/awesome-react)           |
+| Practice     | **Namaste dev interview Practice              | [https://namastedev.com/practice )                                                                     |
 
 ---
 
