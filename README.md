@@ -150,3 +150,82 @@
 ---
 
 
+
+
+
+
+## 🚀 MERN STACK + INTERVIEW PREPARATION GITHUB REPOSITORIES (2025)
+
+---
+
+### 💻 1. **🔥 DSA + Coding Interview Prep**
+
+| Repo                                | Description                                      | Link                                                                                                             |
+| ----------------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| **The Algorithms – C/C++/JS**       | World's largest open-source algorithms repo      | [https://github.com/TheAlgorithms](https://github.com/TheAlgorithms)                                             |
+| **DSA Cracker Sheet (Love Babbar)** | 450 DSA questions with tags, links, and progress | [https://github.com/rajatt95/450-DSA-Cracker](https://github.com/rajatt95/450-DSA-Cracker)                       |
+| **Coding Interview University**     | Legendary self-taught CS roadmap by John Washam  | [https://github.com/jwasham/coding-interview-university](https://github.com/jwasham/coding-interview-university) |
+| **Tech Interview Handbook**         | Best prep guide + system design + resume + tips  | [https://github.com/yangshun/tech-interview-handbook](https://github.com/yangshun/tech-interview-handbook)       |
+| **Leetcode Patterns**               | Patterns to crack Leetcode with explanations     | [https://github.com/SeanPrashad/leetcode-patterns](https://github.com/SeanPrashad/leetcode-patterns)             |
+| **JavaScript Algorithms**           | Data Structures & Algorithms in JS               | [https://github.com/trekhleb/javascript-algorithms](https://github.com/trekhleb/javascript-algorithms)           |
+| **DSA Tracker**                     | Interview prep progress tracker + roadmap        | [https://github.com/sahilbansal17/Competitive\_Coding](https://github.com/sahilbansal17/Competitive_Coding)      |
+
+---
+
+### 📦 2. **MERN Stack Real Projects**
+
+| Repo               | Description                                       | Link                                                                                                       |
+| ------------------ | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **MERN Ecommerce** | Shopping cart + Auth + Payments + Admin dashboard | [https://github.com/basir/node-react-ecommerce](https://github.com/basir/node-react-ecommerce)             |
+| **DevConnector**   | Social media for developers (MERN stack)          | [https://github.com/bradtraversy/devconnector](https://github.com/bradtraversy/devconnector)               |
+| **Chat App**       | Real-time chat with Socket.IO                     | [https://github.com/erictraut/mern-chat](https://github.com/erictraut/mern-chat)                           |
+| **Blog App**       | MERN blog with markdown support and auth          | [https://github.com/safak/youtube/tree/mern-blog-app](https://github.com/safak/youtube/tree/mern-blog-app) |
+| **Job Portal App** | Full-featured MERN Job Portal                     | [https://github.com/moz5691/MERN-Job-Portal](https://github.com/moz5691/MERN-Job-Portal)                   |
+
+---
+
+### 🌐 3. **Fullstack Project Boilerplates**
+
+| Repo                     | Description                          | Link                                                                                                         |
+| ------------------------ | ------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| **mern-boilerplate**     | Simple boilerplate for new MERN apps | [https://github.com/MERN-boilerplate/mern-boilerplate](https://github.com/MERN-boilerplate/mern-boilerplate) |
+| **mern-auth-template**   | JWT-based auth boilerplate           | [https://github.com/riyadhalnur/mern-auth](https://github.com/riyadhalnur/mern-auth)                         |
+| **react-node-fullstack** | React + Node + MongoDB boilerplate   | [https://github.com/crsandeep/simple-react-full-stack](https://github.com/crsandeep/simple-react-full-stack) |
+
+---
+
+### 🧠 4. **System Design Resources**
+
+| Repo                               | Description                             | Link                                                                                                       |
+| ---------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **System Design Primer**           | #1 GitHub repo for system design prep   | [https://github.com/donnemartin/system-design-primer](https://github.com/donnemartin/system-design-primer) |
+| **System Design Interview Notes**  | Concepts, diagrams, architecture        | [https://github.com/madd86/awesome-system-design](https://github.com/madd86/awesome-system-design)         |
+| **Backend System Design Patterns** | Node + scaling + rate limiters + queues | [https://github.com/karanpratapsingh/system-design](https://github.com/karanpratapsingh/system-design)     |
+
+---
+
+### 📚 5. **MERN Stack Learning Resources (GitHub)**
+
+| Repo                              | Description                                        | Link                                                                                                       |
+| --------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **awesome-mern-stack**            | Curated list of MERN resources + tutorials + tools | [https://github.com/Hashnode/mern](https://github.com/Hashnode/mern)                                       |
+| **Fullstack Open (MERN version)** | Course source + exercises                          | [https://github.com/fullstackopen-2023/fullstackopen](https://github.com/fullstackopen-2023/fullstackopen) |
+| **MERN Stack Roadmap**            | Visual learning path and projects                  | [https://github.com/saadpasta/developer-roadmap](https://github.com/saadpasta/developer-roadmap)           |
+| **Node.js Best Practices**        | 90+ best practices for production                  | [https://github.com/goldbergyoni/nodebestpractices](https://github.com/goldbergyoni/nodebestpractices)     |
+
+---
+
+### ✨ 6. **Mock Interviews & Resume Review**
+
+| Repo                            | Description                                                          | Link                                                                                                                           |
+| ------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **Awesome Interview Questions** | Curated list of frontend, backend, and fullstack interview questions | [https://github.com/DopplerHQ/awesome-interview-questions](https://github.com/DopplerHQ/awesome-interview-questions)           |
+| **Project-Based Learning**      | Build skills by building projects (with topics)                      | [https://github.com/practical-tutorials/project-based-learning](https://github.com/practical-tutorials/project-based-learning) |
+| **Developer Resume Repo**       | Real resumes from devs who got hired                                 | [https://github.com/resume/resume.github.com](https://github.com/resume/resume.github.com)                                     |
+
+---
+
+---
+
+
+
